@@ -27,12 +27,12 @@ require("./routes/apiRoutes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 
 
-db.sequelize.sync().then(() => {
+  db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
-        console.log("App is listening on http://localhost:" + PORT);
+      console.log("App is listening on http://localhost:" + PORT);
     });
-});
+  });
