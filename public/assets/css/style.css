@@ -32,12 +32,17 @@ div{
 
 .infobox,
 .mw-references-wrap,
-.navigation-not-searchable {
+.navigation-not-searchable,
+.thumbinner,
+.mbox-text-span,
+.mbox-image,
+.mw-ext-cite-error,
+.vertical-navbox {
   display: none;
 }
 
 .diseaseDescription a {
   pointer-events: none;
-  font: 30px;
+  color: black;
 }
 

@@ -15,8 +15,7 @@ $(".diseaseSearchBtn").click(function () {
   for (i = 0; i < diseases.length; i++) {
     var diseaseId = diseases[i][0].replace(/\s/g, "");
     $(".diseaseSearch").append(
-      '<a class="dropdown-item" href="./diseases.html"' +
-        " id=" +
+      '<a class="dropdown-item" href="./diseases.html" id="' +
         diseaseId +
         '">' +
         diseases[i][0] +
