@@ -1,0 +1,10 @@
+.infobox,
+.mw-references-wrap,
+.navigation-not-searchable {
+  display: none;
+}
+
+.diseaseDescription a {
+  pointer-events: none;
+  font: 30px;
+}

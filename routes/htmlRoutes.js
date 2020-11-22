@@ -1,3 +1,12 @@
+
+// var path = require("path");
+
+// module.exports = function (app) {
+//   app.get("/:disease", function (req, res) {
+//     res.sendFile(path.join(__dirname, "disease.html"));
+//   });
+// };
+
 const path = require("path");
 
 const authentication = require("../config/middleware/authentication");
@@ -21,3 +30,4 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, ""));
     });
 };
+
