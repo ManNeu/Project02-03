@@ -1,3 +1,4 @@
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:wght@300);
 
 body {
@@ -28,3 +29,15 @@ p{
 div{
     border: 2pt solid #7de8ea;
 }
+
+.infobox,
+.mw-references-wrap,
+.navigation-not-searchable {
+  display: none;
+}
+
+.diseaseDescription a {
+  pointer-events: none;
+  font: 30px;
+}
+
