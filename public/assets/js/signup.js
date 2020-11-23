@@ -1,33 +1,33 @@
 $(document).ready(() => {
     const signUpForm = $("form.signup");
-    const nameInput = $("input#name-input");
+    const fnameInput = $("input#fname-input");
     const emailInput = $("input#email-input");
     const passwordInput = $("input#password-input");
 
     signUpForm.on("submit", event => {
         event.preventDefault();
         const userData = {
-            name: nameInput.val().trim(),
+            fname: fnameInput.val().trim(),
             email: emailInput.val().trim(),
-            password: passwordInput.val().trim()
+            pass: passwordInput.val().trim()
         };
 
-        if (!userData.name || !userData.email || !userData.password) {
+        if (!userData.fname || !userData.email || !userData.password) {
             return;
         }
-        userSignUp(userData.name, userData.email, userData.password);
+        userSignUp(userData.fname, userData.email, userData.password);
         nameInput.val("");
         emailInput.val("");
         passwordInput.val("");
     });
 
-    function userSignUp(name, email, password) {
+    function userSignUp(fname, email, password) {
         $.post("/api/signup", {
-            name: name,
+            fname: fname,
             email: email,
             password: password
         }).then(() => {
-            window.location.replace("")
+            window.location.replace("/index")
         }).catch(loginErr);
     }
 
