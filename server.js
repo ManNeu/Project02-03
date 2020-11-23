@@ -1,4 +1,3 @@
-
 // *********************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 // *********************************************************************************
@@ -6,6 +5,8 @@
 // Dependencies
 // =============================================================
 var express = require("express");
+var session = require("express-session");
+var passport = require("./config/passport");
 
 // Sets up the Express App
 // =============================================================
@@ -16,6 +17,11 @@ var PORT = process.env.PORT || 3030;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 // Static directory to be served
 app.use(express.static("public"));
 
@@ -29,8 +35,7 @@ require("./routes/signupRoutes.js")(app);
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
-  console.log("App listening on PORT " + PORT);
-
+  console.log("App listening on PORT - http://localhost:" + PORT);
 
   // db.sequelize.sync().then(() => {
   //     app.listen(PORT, () => {
@@ -38,4 +43,3 @@ app.listen(PORT, function () {
   //     });
   //   });
 });
-
