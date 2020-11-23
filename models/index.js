@@ -30,6 +30,21 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+// JOINING TABLES
+// db.Disease.hasMany(db.Profile, {foreignKey: 'disease_id'})
+// db.Profile.belongsTo(db.Disease, {foreignKey: 'disease_id'})
+// Post.find({ where: { ...}, include: [Disease]})
+
+// db.Disease.belongsToMany(db.Profile, {through: 'Profile', foreignKey: 'disease_id'});
+// db.Profile.belongsToMany(db.Disease, {through: 'Profile', foreignKey: 'person_id'});
+
+
+// var Disease = sequelize.define('disease', {foreignKey: 'disease_id'})
+// var Profile = sequelize.define('proflie', {foreignKey: 'profile_id'})
+//  // OK. Now things get more complicated (not really visible to the user :)).
+// // First let's define a hasMany association
+// Profile.hasMany(Disease, {as: 'vaccine'})
+
 // sequelize.sync({force: true
 // })
 

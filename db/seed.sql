@@ -5,7 +5,7 @@ VALUES
 ('Tom', 'Jones', 'c@email.au', 'abc123'),
 ('Bernard', 'Fanning', 'd@email.au', 'abc123');
 
-INSERT INTO protections (person_id, disease_id, vaccinated, vaxdate, booster)
+INSERT INTO profiles (person_id, disease_id, vaccinated, vaxdate, booster)
 VALUES 
 (1, 10, 1, '2020-06-01', '2030-06-01'),
 (1, 16, 1, '2020-06-01', '2025-06-01'),
@@ -18,7 +18,7 @@ VALUES
 (3, 4, 1, '2020-06-01', '2025-06-01'),
 (4, 10, 1, '2020-06-01', '2030-06-01');
 
-INSERT INTO protections (person_id, disease_id, vaccinated)
+INSERT INTO profiles (person_id, disease_id, vaccinated)
 VALUES 
 (4, 1, 0),
 (4, 20, 0),
@@ -31,7 +31,7 @@ VALUES
 (2, 22, 0),
 (1, 22, 0);
 
-INSERT INTO protections (person_id, disease_id, vaccinated, lifetime)
+INSERT INTO profiles (person_id, disease_id, vaccinated, lifetime)
 VALUES 
 (4, 2, 1, 1),
 (1, 2, 1, 1);
