@@ -8,5 +8,6 @@ module.exports = function(sequelize, DataTypes) {
       lifetime: DataTypes.BOOLEAN
     });
     return Profile;
+    
   };
   
