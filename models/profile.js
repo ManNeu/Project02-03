@@ -5,6 +5,13 @@ module.exports = function(sequelize, DataTypes) {
       protected: DataTypes.BOOLEAN,
       vaxdate: DataTypes.DATE,
       expdate: DataTypes.DATE,
+      // // Attempt to reformat date
+      // expdate: {
+      //   type: DataTypes.DATEONLY,
+      //   get: function() {
+      //     return moment.utc(this.getDataValue('regDate')).format('DD-MM-YYYY');
+      //   }
+      // },
       lifetime: DataTypes.BOOLEAN
     });
     return Profile;
