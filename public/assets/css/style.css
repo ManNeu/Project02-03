@@ -1,33 +1,31 @@
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:wght@300);
 
 body {
-    background-color: MediumTurquoise;
-    margin-left: 20px;
+  background-color: MediumTurquoise;
+  margin-left: 20px;
 }
 
-h1{
-
-    font-family: 'Roboto', sans-serif;
-    font-size: 75px;
-    align-content: center;
-    margin-bottom: 0%;
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 75px;
+  align-content: center;
+  margin-bottom: 0%;
 }
 
-h2{
-    font-family: 'Roboto', sans-serif;
+h2 {
+  font-family: "Roboto", sans-serif;
 }
 
-h3{
-    font-family: 'Roboto', sans-serif;
+h3 {
+  font-family: "Roboto", sans-serif;
 }
 
-p{
-    font-family: 'Roboto', sans-serif;
+p {
+  font-family: "Roboto", sans-serif;
 }
 
-div{
-    border: 2pt solid #7de8ea;
+div {
+  border: 2pt solid #7de8ea;
 }
 
 .infobox,
@@ -37,7 +35,8 @@ div{
 .mbox-text-span,
 .mbox-image,
 .mw-ext-cite-error,
-.vertical-navbox {
+.vertical-navbox,
+.reference {
   display: none;
 }
 
@@ -45,4 +44,3 @@ div{
   pointer-events: none;
   color: black;
 }
-
