@@ -46,7 +46,9 @@ $(document).ready(function() {
       [
         "<li class='list-group-item protection-item'>",
         "<span>",
-        protection.disease_id,
+        // protection.disease_id, 
+        protection.Disease.disease,
+        ", until " + (protection.expdate),
         "</span>",
         "<input type='text' class='edit' style='display: none;'>",
         // "<button class='delete btn btn-danger'>x</button>",
