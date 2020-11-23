@@ -31,8 +31,8 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // JOINING TABLES
-// db.Disease.hasMany(db.Profile, {foreignKey: 'disease_id'})
-// db.Profile.belongsTo(db.Disease, {foreignKey: 'disease_id'})
+db.Disease.hasMany(db.Profile, {foreignKey: 'disease_id'})
+db.Profile.belongsTo(db.Disease, {foreignKey: 'disease_id'})
 // Post.find({ where: { ...}, include: [Disease]})
 
 // db.Disease.belongsToMany(db.Profile, {through: 'Profile', foreignKey: 'disease_id'});

@@ -36,13 +36,13 @@ CREATE TABLE persons (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE protections (
+CREATE TABLE profiles (
   id INT NOT NULL AUTO_INCREMENT,
   person_id INT NOT NULL,
   disease_id INT NOT NULL,
-  vaccinated BOOLEAN NOT NULL, -- 1 means they have protection, 0 if it is on their shopping lsit
+  protected BOOLEAN NOT NULL, -- 1 means they have protection, 0 if it is on their shopping lsit
   vaxdate DATE, -- when the person takes the vaccination 
-  booster DATE, -- the estimateddatewhen protection runs out
+  expdate DATE, -- the estimateddate when protection runs out
   lifetime BOOLEAN NOT NULL DEFAULT false, 
   PRIMARY KEY (id)
 );
