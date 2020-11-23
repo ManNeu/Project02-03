@@ -7,19 +7,21 @@ $(".countrySearch a").click(function () {
   for (i = 0; i < countries.length; i++) {
     if (countries[i].includes(userChoice)) {
       $(".result").append("<p>" + countries[i][0] + "</p>");
+      console.log(countries[i][0]);
     }
   }
 });
+
 
 $(".diseaseSearchBtn").click(function () {
   for (i = 0; i < diseases.length; i++) {
     var diseaseId = diseases[i][0].replace(/\s/g, "");
     $(".diseaseSearch").append(
       '<a class="dropdown-item" href="./diseases.html" id="' +
-        diseaseId +
-        '">' +
-        diseases[i][0] +
-        "</a>"
+      diseaseId +
+      '">' +
+      diseases[i][0] +
+      "</a>"
     );
   }
 
