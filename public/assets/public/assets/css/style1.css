@@ -29,20 +29,3 @@ p{
 div{
     border: 2pt solid #7de8ea;
 }
-
-.infobox,
-.mw-references-wrap,
-.navigation-not-searchable,
-.thumbinner,
-.mbox-text-span,
-.mbox-image,
-.mw-ext-cite-error,
-.vertical-navbox {
-  display: none;
-}
-
-.diseaseDescription a {
-  pointer-events: none;
-  color: black;
-}
-

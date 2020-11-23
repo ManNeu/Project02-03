@@ -5,6 +5,48 @@ window.onload = function () {
   $(".diseaseName").text(userDiseaseChoice);
   $(".diseaseDescription").text("now loading...");
 
+  if (userDiseaseChoice === "Covid-19") {
+    var userDiseaseChoice = "Coronavirus_disease_2019";
+  }
+
+  if (userDiseaseChoice === "Measels") {
+    var userDiseaseChoice = "Measles";
+  }
+
+  if (userDiseaseChoice === "Typhoid") {
+    var userDiseaseChoice = "Typhoid_fever";
+  }
+
+  if (userDiseaseChoice === "Yellow Fever") {
+    var userDiseaseChoice = "Yellow_fever";
+  }
+
+  if (userDiseaseChoice === "Japanese Encephalitis") {
+    var userDiseaseChoice = "Japanese_encephalitis";
+  }
+
+  if (userDiseaseChoice === "Tetinus") {
+    var userDiseaseChoice = "tetanus";
+  }
+
+  if (userDiseaseChoice === "Pertussis") {
+    var userDiseaseChoice = "Whooping_cough";
+  }
+
+  if (userDiseaseChoice === "Chickenpox (Varicella)") {
+    var userDiseaseChoice = "Chickenpox";
+  }
+
+  if (userDiseaseChoice === "HPV (Human Papillomavirus)") {
+    var userDiseaseChoice = "Human_papillomavirus_infection";
+  }
+
+  if (userDiseaseChoice === "Shingles (Herpes Zoster)") {
+    var userDiseaseChoice = "Shingles";
+  }
+
+  console.log(userDiseaseChoice);
+
   $.ajax({
     url: "https://en.wikipedia.org/w/api.php",
     data: {
