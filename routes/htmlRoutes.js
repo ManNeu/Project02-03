@@ -19,22 +19,26 @@ const authentication = require("../config/middleware/authentication");
 
 module.exports = function (app) {
 
-    app.get("/profile", function(req, res) {
+    app.get("/profile", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/assets/profile.html"));
-      });
+    });
 
     app.get("/login", (req, res) => {
         if (req.user) {
-            res.redirect("")
+            res.redirect("../public/assets/index.html")
         }
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
 
     app.get("/", (req, res) => {
         if (req.user) {
-            res.redirect("");
+            res.redirect("../public/assets/index.html");
         }
         res.sendFile(path.join(__dirname, "../public/signup.html"));
+    });
+
+    app.get("/index", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/assets/index.html"));
     });
 
     app.get("", authentication, (req, res) => {
@@ -42,7 +46,7 @@ module.exports = function (app) {
     });
 
 
-    
+
 };
 
 
