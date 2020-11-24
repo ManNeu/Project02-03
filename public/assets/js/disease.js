@@ -70,3 +70,16 @@ window.onload = function () {
     },
   });
 };
+
+$(".addToCart").on("click", function () {
+  function addToCart() {
+    $.post("/api/list", {
+      // person_id: ,
+      // disease_id: ,
+      protected: 0,
+      //   {
+      //     timestamps: false
+    });
+  }
+  addToCart();
+});
