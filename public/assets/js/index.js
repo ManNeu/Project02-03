@@ -1,3 +1,52 @@
+// var $diseaseContainer = $(".disease-container");
+// getDiseases();
+
+//     // This function grabs diseases from the database and updates the view
+//     function getDiseases() {
+//       $.get("/api/disease", function(data) {
+//         console.log(data);
+//         initializeRows(data);
+//       });
+//     }
+
+//     // This function resets the diseases displayed with new diseases from the database
+//   function initializeRows(diseasesRows) {
+//     $diseaseContainer.empty();
+//     var rowsToAdd = [];
+//     for (var i = 0; i < diseasesRows.length; i++) {
+//       rowsToAdd.push(createNewRow(diseasesRows[i]));
+//     }
+//     $diseaseContainer.prepend(rowsToAdd);
+//   }
+
+// //   // This function constructs a disease-item row
+//   function createNewRow(disease) {
+//     console.log(disease);
+//     var $newInputRow = $(
+//       [
+//         "<li class='list-group-item disease-item'>",
+//         "<span>",
+//         // disease.disease_id, 
+//         disease.Disease.disease,
+//         "</span>",
+//         "<input type='text' class='edit' style='display: none;'>",
+//         "</li>"
+//       ].join("")
+//     );
+
+//     $newInputRow.find("button.delete").data("id", disease.id);
+//     $newInputRow.find("input.edit").css("display", "none");
+//     $newInputRow.data("disease", disease);
+//     if (disease.complete) {
+//       $newInputRow.find("span").css("text-decoration", "line-through");
+//     }
+//     return $newInputRow;
+//   }
+
+
+  // -----------------------------------------------------
+
+
 $(".countrySearch a").click(function () {
   $(".result").empty();
 
