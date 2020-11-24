@@ -17,7 +17,8 @@ module.exports = function (app) {
       password: req.body.password,
     })
       .then((person) => {
-        res.JSON(person);
+        res.redirect(307, "/api/login");
+        //res.JSON(person);
       })
       .catch((err) => {
         res.status(401).json(err);
