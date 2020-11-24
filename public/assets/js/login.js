@@ -28,8 +28,10 @@ $(document).ready(() => {
       email: email,
       password: password,
     })
-      .then(() => {
+      .then((data) => {
+        console.log("console logging data:" + data);
         window.location.replace("/index");
+        localStorage.setItem("user", JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err);

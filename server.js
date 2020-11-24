@@ -14,7 +14,6 @@ var passport = require("./config/passport");
 var app = express();
 var PORT = process.env.PORT || 3030;
 
-
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,6 +31,7 @@ app.use(express.static("public"));
 require("./routes/profile-api-routes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/signupRoutes.js")(app);
+//require("./routes/getIdNumber.js")(app);
 // require("./routes/apiRoutes.js")(app);
 
 // Starts the server to begin listening
@@ -39,9 +39,8 @@ require("./routes/signupRoutes.js")(app);
 // app.listen(PORT, function () {
 //   console.log("App listening on PORT - http://localhost:" + PORT);
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log("App is listening on http://localhost:" + PORT);
   });
 });
-
