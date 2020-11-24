@@ -3,6 +3,7 @@ $(document).ready(function() {
   // var $newItemInput = $("input.new-item");
   // // Our new protections will go inside the protectionContainer
   var $protectionContainer = $(".protection-container");
+  var $shoppingContainer = $(".shopping-container");
   // // Adding event listeners for deleting, editing, and adding protections
   // $(document).on("click", "button.delete", deleteProtection);
   // $(document).on("click", "button.complete", toggleComplete);
@@ -13,15 +14,23 @@ $(document).ready(function() {
 
   // Getting protections from database when page loads
   getProtections();
+  getShoppingCart();
 
     // This function grabs protections from the database and updates the view
     function getProtections() {
-      $.get("/api/profile", function(data) {
-        // protections = data;
+      $.get("/api/protection", function(data) {
         console.log(data);
         initializeRows(data);
       });
     }
+
+    function getShoppingCart() {
+      $.get("/api/profile", function(data) {
+        console.log(data);
+        initializeCart(data);
+      });
+    }
+
 
   // This function resets the protections displayed with new protections from the database
   function initializeRows(protectionsRows) {
@@ -33,15 +42,9 @@ $(document).ready(function() {
     $protectionContainer.prepend(rowsToAdd);
   }
 
-//   var str = '<ul>'
-// data.forEach(function(slide) {
-//   str += '<li>'+ slide + '</li>';
-// }); 
-// str += '</ul>';
-
 //   // This function constructs a protection-item row
   function createNewRow(protection) {
-    console.log(protection  );
+    console.log(protection);
     var $newInputRow = $(
       [
         "<li class='list-group-item protection-item'>",
@@ -51,8 +54,6 @@ $(document).ready(function() {
         ", until " + (protection.expdate),
         "</span>",
         "<input type='text' class='edit' style='display: none;'>",
-        // "<button class='delete btn btn-danger'>x</button>",
-        // "<button class='complete btn btn-primary'>✓</button>",
         "</li>"
       ].join("")
     );
@@ -66,15 +67,64 @@ $(document).ready(function() {
     return $newInputRow;
   }
 
-  // This function inserts a new protection into our database and then updates the view
-  function insertProtection(event) {
-    event.preventDefault();
-    var protection = {
-      text: $newItemInput.val().trim(),
-      complete: false
-    };
 
-    $.post("/api/profile", protection, getProtection);
-    $newItemInput.val("");
+    // // This function grabs protections from the database and updates the view
+    // function getProtections() {
+    //   $.get("/api/profile", function(data) {
+    //     // protections = data;
+    //     console.log(data);
+    //     initializeRows(data);
+    //     initializeCart(data);
+    //   });
+    // }
+
+
+    
+  // This function resets the protections displayed with new protections from the database
+  function initializeCart(shoppingRows) {
+    $shoppingContainer.empty();
+    var cartsToAdd = [];
+    for (var i = 0; i < shoppingRows.length; i++) {
+      cartsToAdd.push(createNewCart(shoppingRows[i]));
+    }
+    $shoppingContainer.prepend(cartsToAdd);
   }
+
+//   // This function constructs a shoppping-item row
+  function createNewCart(shopping) {
+    console.log(shopping);
+    var $newInputCart = $(
+      [
+        "<li class='list-group-item shoppping-item'>",
+        "<span>",
+        shopping.Disease.disease,
+        "</span>",
+        // "<input type='text' class='edit' style='display: none;'>",
+        " ",
+        "<button class='complete btn btn-primary'> vaccinate </button>",
+        " ",
+        "<button class='delete btn btn-danger'> delete </button>",
+        "</li>"
+      ].join("")
+    );
+
+    $newInputCart.find("button.delete").data("id", shopping.id);
+    $newInputCart.find("input.edit").css("display", "none");
+    $newInputCart.data("shopping", shopping);
+    if (shopping.complete) {
+      $newInputCart.find("span").css("text-decoration", "line-through");
+    }
+    return $newInputCart;
+  }
+  // // This function inserts a new protection into our database and then updates the view
+  // function insertProtection(event) {
+  //   event.preventDefault();
+  //   var protection = {
+  //     text: $newItemInput.val().trim(),
+  //     complete: false
+  //   };
+
+  //   $.post("/api/profile", protection, getProtection);
+  //   $newItemInput.val("");
+  // }
 });
