@@ -73,13 +73,16 @@ window.onload = function () {
 
 $(".addToCart").on("click", function () {
   function addToCart() {
+    var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
+    console.log(userIdNumber);
     $.post("/api/list", {
-      // person_id: ,
-      // disease_id: ,
+      person_id: userIdNumber,
+      disease_id: ,
       protected: 0,
-      //   {
-      //     timestamps: false
-    });
+        {
+          timestamps: false
+        }
+        });
   }
   addToCart();
 });
