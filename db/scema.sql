@@ -4,10 +4,8 @@ USE vaxapp;
 
 CREATE TABLE countrys
 (
-      id INT NOT NULL
-      AUTO_INCREMENT,
-  country VARCHAR
-      (100) NULL,
+      id INT NOT NULL AUTO_INCREMENT,
+  country VARCHAR(100) NULL,
   iso VARCHAR
       (2) NULL,
   continent VARCHAR
