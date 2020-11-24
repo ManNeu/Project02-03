@@ -1,7 +1,8 @@
 const db = require("../models");
+const passport = require("../config/passport");
 
 module.exports = function (app) {
-  app.post("/api/login", (req, res) => {
+  app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json({
       fname: req.body.name,
       email: req.body.email,
@@ -13,7 +14,7 @@ module.exports = function (app) {
     db.Person.create({
       fname: req.body.fname,
       email: req.body.email,
-      pass: req.body.pass,
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
