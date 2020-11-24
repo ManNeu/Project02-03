@@ -9,14 +9,14 @@ $(document).ready(() => {
         const userData = {
             fname: fnameInput.val().trim(),
             email: emailInput.val().trim(),
-            pass: passwordInput.val().trim()
+            password: passwordInput.val().trim()
         };
 
         if (!userData.fname || !userData.email || !userData.password) {
             return;
         }
         userSignUp(userData.fname, userData.email, userData.password);
-        nameInput.val("");
+        fnameInput.val("");
         emailInput.val("");
         passwordInput.val("");
     });
