@@ -29,7 +29,7 @@ $(document).ready(() => {
     })
       .then((data) => {
         console.log(data);
-        window.location.replace("/login")
+        //window.location.replace("/index")
       })
       .catch(loginErr);
   }
