@@ -30,12 +30,13 @@ $(document).ready(() => {
       .then((data) => {
         console.log(data);
         window.location.replace("/index");
+
       })
       .catch(loginErr);
   }
 
   function loginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    $("#alert .msg").text("Error: Please enter a valid input", err.responseJSON);
     $("#alert").fadeIn(500);
   }
 });

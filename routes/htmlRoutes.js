@@ -41,8 +41,8 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/assets/index.html"));
     });
 
-    app.get("", authentication, (req, res) => {
-        res.sendFile(path.join(__dirname, ""));
+    app.get("/index", authentication, (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/assets/index.html"));
     });
 
 

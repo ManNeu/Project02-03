@@ -39,7 +39,7 @@ require("./routes/signupRoutes.js")(app);
 // app.listen(PORT, function () {
 //   console.log("App listening on PORT - http://localhost:" + PORT);
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log("App is listening on http://localhost:" + PORT);
   });
