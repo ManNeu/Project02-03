@@ -1,3 +1,25 @@
+function getDiseases() {
+  $.get("/api/disease", function (data) {
+    console.log(data);
+    console.log(data[5]);
+
+    for (i = 0; i < data.length; i++) {
+      var diseaseId = data[i].disease.replace(/\s/g, "");
+      $(".diseaseSearch").append(
+        '<a class="dropdown-item" href="/assets/diseases.html" id="' +
+          diseaseId +
+          '">' +
+          data[i].disease +
+          "</a>"
+      );
+      $(".diseaseSearch a").on("click", function () {
+        var userChoiceDisease = $(this).text();
+        localStorage.setItem("disease", userChoiceDisease);
+      });
+    }
+  });
+}
+
 $(".countrySearch a").click(function () {
   $(".result").empty();
 
@@ -19,19 +41,5 @@ $(".countrySearch a").click(function () {
 });
 
 $(".diseaseSearchBtn").click(function () {
-  for (i = 0; i < diseases.length; i++) {
-    var diseaseId = diseases[i][0].replace(/\s/g, "");
-    $(".diseaseSearch").append(
-      '<a class="dropdown-item" href="/assets/diseases.html" id="' +
-        diseaseId +
-        '">' +
-        diseases[i][0] +
-        "</a>"
-    );
-  }
-
-  $(".diseaseSearch a").on("click", function () {
-    var userChoiceDisease = $(this).text();
-    localStorage.setItem("disease", userChoiceDisease);
-  });
+  getDiseases();
 });
