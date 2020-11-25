@@ -17,7 +17,7 @@ module.exports = function (app) {
   app.get("/api/protection", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: ['disease_id', 'expdate', 'protected'],
+      attributes: ['disease_id', 'vaxdate', 'protected'],
       where: {
         protected: 1
     },
@@ -33,7 +33,8 @@ module.exports = function (app) {
   app.get("/api/profile", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: ['disease_id', 'expdate', 'protected'],
+      attributes: ['disease_id', 'vaxdate', 'protected'],
+            // order: ['expdate', 'DESC'], 089
       where: {
         protected: 0
     },
@@ -59,6 +60,15 @@ module.exports = function (app) {
 
   
   // DELETE FROM SHOPPING LIST
+  app.delete("/api/profile/:id", function(req, res) {
+    db.Profile.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbProfile) {
+      res.json(dbProfile);
+    });
+  });
 // app.delete("/api/disease", function (req, res) {
 //   // findAll returns all entries for a table when used with no options
 //   db.Disease.findAll({

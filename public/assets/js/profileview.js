@@ -4,6 +4,7 @@ $(document).ready(function() {
   // // Our new protections will go inside the protectionContainer
   var $protectionContainer = $(".protection-container");
   var $shoppingContainer = $(".shopping-container");
+
   // // Adding event listeners for deleting, editing, and adding protections
   // $(document).on("click", "button.delete", deleteProtection);
   // $(document).on("click", "button.complete", toggleComplete);
@@ -11,6 +12,8 @@ $(document).ready(function() {
   // $(document).on("keyup", ".protection-item", finishEdit);
   // $(document).on("blur", ".protection-item", cancelEdit);
   // $(document).on("submit", "#protection-form", insertProtection);
+  // $(document).on("submit", "#author-form", handleAuthorFormSubmit);
+  $(document).on("click", ".delete-profile", handleDeleteButtonPress);
 
   // Getting protections from database when page loads
   getProtections();
@@ -51,7 +54,7 @@ $(document).ready(function() {
         "<span>",
         // protection.disease_id, 
         protection.Disease.disease,
-        ", until " + (protection.expdate),
+        ", vaccinated on " + (protection.vaxdate),
         "</span>",
         "<input type='text' class='edit' style='display: none;'>",
         "</li>"
@@ -96,14 +99,12 @@ $(document).ready(function() {
     var $newInputCart = $(
       [
         "<li class='list-group-item shoppping-item'>",
+        "<button class='complete btn btn-primary'> vaccinate </button>",
+        "<button class='delete-profile btn btn-danger'> delete </button>",
+        " ",
         "<span>",
         shopping.Disease.disease,
         "</span>",
-        // "<input type='text' class='edit' style='display: none;'>",
-        " ",
-        "<button class='complete btn btn-primary'> vaccinate </button>",
-        " ",
-        "<button class='delete btn btn-danger'> delete </button>",
         "</li>"
       ].join("")
     );
@@ -127,4 +128,15 @@ $(document).ready(function() {
   //   $.post("/api/profile", protection, getProtection);
   //   $newItemInput.val("");
   // }
+
+    // Function for handling what happens when the delete button is pressed
+    function handleDeleteButtonPress() {
+      var listItemData = $(this).parent("li").data("disease");
+      var id = listItemData.id;
+      $.ajax({
+        method: "DELETE",
+        url: "/api/profile/" + id
+      })
+        // .then(getAuthors);
+    }
 });
