@@ -29,6 +29,8 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./routes/profile-api-routes.js")(app);
+// require("./routes/index-api-routes.js")(app);
+require("./routes/destination-api-routes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/signupRoutes.js")(app);
 //require("./routes/getIdNumber.js")(app);
