@@ -38,5 +38,5 @@ INSERT INTO profiles (person_id, disease_id, protected, lifetime)
 VALUES 
 (4, 2, 1, 1),
 (1, 2, 1, 1);
-drop table profiles;
+
 SELECT * from profiles;

@@ -1,9 +1,7 @@
 USE vaxapp;
 
-INSERT INTO recomendations
-    (country_id, disease_id, priority)
+INSERT INTO recomendations(country_id, disease_id, priority)
 VALUES
-
     ('Afghanistan', 2, 'most'),
     ('Afghanistan', 3, 'some'),
     ('Afghanistan', 4, 'some'),
@@ -823,12 +821,12 @@ VALUES
     ('Wake Island', 3, 'some'),
     ('Wake Island', 5, 'all'),
     ('Wake Island', 9, 'most'),
-    ('Western Sahara', , 2, 'most'),
-    ('Western Sahara', , 3, 'some'),
-    ('Western Sahara', , 4, 'some'),
-    ('Western Sahara', , 5, 'all'),
-    ('Western Sahara', , 8, 'some'),
-    ('Western Sahara', , 9, 'most'),
+    ('Western Sahara', 2, 'most'),
+    ('Western Sahara', 3, 'some'),
+    ('Western Sahara', 4, 'some'),
+    ('Western Sahara', 5, 'all'),
+    ('Western Sahara', 8, 'some'),
+    ('Western Sahara', 9, 'most'),
     ('Yemen', 1, 'some'),
     ('Yemen', 2, 'most'),
     ('Yemen', 3, 'some'),
