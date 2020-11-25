@@ -30,10 +30,14 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-// JOINING TABLES
+// JOINING TABLES FOR PROFILE
 db.Disease.hasMany(db.Profile, {foreignKey: 'disease_id'})
 db.Profile.belongsTo(db.Disease, {foreignKey: 'disease_id'})
 // Post.find({ where: { ...}, include: [Disease]})
+
+// JOINING TABLES FOR DESTINATIONS
+db.Disease.hasMany(db.Recomendation, {foreignKey: 'disease_id'})
+db.Recomendation.belongsTo(db.Disease, {foreignKey: 'disease_id'})
 
 // db.Disease.belongsToMany(db.Profile, {through: 'Profile', foreignKey: 'disease_id'});
 // db.Profile.belongsToMany(db.Disease, {through: 'Profile', foreignKey: 'person_id'});

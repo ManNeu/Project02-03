@@ -12,39 +12,46 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
 
-  
+  // var userChoiceCountry;
+
+// window.onload = function () {
+  // var userChoiceCountry = localStorage.getItem("country");
+  // $(".contInfo h2").append(userChoiceCountry);
+// };
+  // // GET route for getting all of the protections
+  // app.get("/api/destinations", function (req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.Profile.findAll({
+  //     attributes: ['country_id', 'disease_id', 'priority'],
+  //     where: {
+  //       protected: 1
+  //   },
+  //     include: [db.Disease]
+  //   }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+  //     // We have access to the Profiles as an argument inside of the callback function
+  //     console.log(dbProfile);
+  //     res.json(dbProfile);
+  //   });
+  // });
+
   // GET route for getting all of the protections
-  app.get("/api/protection", function (req, res) {
+  app.get("/api/recomendation", function (req, res) {
     // findAll returns all entries for a table when used with no options
-    db.Profile.findAll({
-      attributes: ['disease_id', 'vaxdate', 'protected'],
+    db.Recomendation.findAll({
+      attributes: ['country_id', 'disease_id', 'priority'],
       where: {
-        protected: 1
+        priority: "all",
+        country_id: "angola"
     },
       include: [db.Disease]
-    }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+    }).then(function (dbRecomendation) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
-      console.log(dbProfile);
-      res.json(dbProfile);
+      console.log(dbRecomendation);
+      res.json(dbRecomendation);
     });
   });
 
-  // GET route for getting all of the shopping list items
-  app.get("/api/profile", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Profile.findAll({
-      attributes: ['disease_id', 'vaxdate', 'protected'],
-      where: {
-        protected: 0
-    },
-      include: [db.Disease]
-    }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
-      // We have access to the Profiles as an argument inside of the callback function
-      console.log(dbProfile);
-      res.json(dbProfile);
-    });
-  });
-
+    // GET route for getting all of the recoms
   app.get("/api/disease", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Disease.findAll({
@@ -58,16 +65,16 @@ module.exports = function (app) {
 
 
   
-  // DELETE FROM SHOPPING LIST
-  app.delete("/api/profile/:id", function(req, res) {
-    db.Profile.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbProfile) {
-      res.json(dbProfile);
-    });
-  });
+  // // DELETE FROM SHOPPING LIST
+  // app.delete("/api/profile/:id", function(req, res) {
+  //   db.Profile.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function(dbProfile) {
+  //     res.json(dbProfile);
+  //   });
+  // });
 
 
 // app.delete("/api/disease", function (req, res) {

@@ -13,7 +13,7 @@ $(document).ready(function() {
   // $(document).on("blur", ".protection-item", cancelEdit);
   // $(document).on("submit", "#protection-form", insertProtection);
   // $(document).on("submit", "#author-form", handleAuthorFormSubmit);
-  $(document).on("click", ".delete-profile", handleDeleteButtonPress);
+  $(document).on("click", ".delete-profile", deleteShoppingItem);
 
   // Getting protections from database when page loads
   getProtections();
@@ -129,14 +129,27 @@ $(document).ready(function() {
   //   $newItemInput.val("");
   // }
 
-    // Function for handling what happens when the delete button is pressed
-    function handleDeleteButtonPress() {
-      var listItemData = $(this).parent("li").data("disease");
-      var id = listItemData.id;
+    // // Function for handling what happens when the delete button is pressed
+    // function handleDeleteButtonPress() {
+    //   var listItemData = $(this).parent("li").data("disease");
+    //   var id = listItemData.id;
+    //   $.ajax({
+    //     method: "DELETE",
+    //     url: "/api/profile/" + id
+    //   })
+    //     // .then(getAuthors);
+    // }
+
+
+    function deleteShoppingItem(id) {
       $.ajax({
         method: "DELETE",
-        url: "/api/profile/" + id
+        url: "/api/profiles/" + id
       })
-        // .then(getAuthors);
+        // .then(function() {
+        //   getProfiles(profileCategorySelect.val());
+        // });
     }
+
+
 });
