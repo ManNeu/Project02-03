@@ -1,8 +1,5 @@
 function getDiseases() {
   $.get("/api/disease", function (data) {
-    console.log(data);
-    console.log(data[5]);
-
     for (i = 0; i < data.length; i++) {
       var diseaseId = data[i].disease.replace(/\s/g, "");
       $(".diseaseSearch").append(

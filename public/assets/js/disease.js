@@ -71,18 +71,33 @@ window.onload = function () {
   });
 };
 
-// $(".addToCart").on("click", function () {
-//   function addToCart() {
-//     var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
-//     console.log(userIdNumber);
-//     $.post("/api/list", {
-//       person_id: userIdNumber,
-//       disease_id: ,
-//       protected: 0,
-//         {
-//           timestamps: false
-//         }
-//         });
-//   }
-//   addToCart();
-// });
+function getDiseaseId(userDiseaseChoice, diseaseId) {
+  $.post("api/getDiseaseId", {
+    disease: userDiseaseChoice,
+    diseaseId: diseaseId,
+  })
+    .then((data) => {
+      console.log("console logging data:" + data);
+      localStorage.setItem("disease", JSON.stringify(data));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function addToCart() {
+  var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
+  var diseaseIdNumber = JSON.parse(localStorage.getItem("disease")).id;
+  console.log(userIdNumber);
+  console.log(diseaseIdNumber);
+  $.post("/api/list", {
+    person_id: userIdNumber,
+    disease_id: diseaseIdNumber,
+    protected: 0,
+  });
+}
+
+$(".addToCart").on("click", function () {
+  getDiseaseId();
+  addToCart();
+});

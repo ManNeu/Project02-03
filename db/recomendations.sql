@@ -1,10 +1,6 @@
 USE vaxapp;
-
-INSERT INTO recomendations
-    (country_id, disease_id, priority)
-VALUES
-
-    ('Afghanistan', 2, 'most'),
+INSERT INTO recomendations (country_id, disease_id, priority)
+VALUES ('Afghanistan', 2, 'most'),
     ('Afghanistan', 3, 'some'),
     ('Afghanistan', 4, 'some'),
     ('Afghanistan', 5, 'all'),
@@ -609,10 +605,26 @@ VALUES
     ('South Africa', 5, 'all'),
     ('South Africa', 8, 'some'),
     ('South Africa', 9, 'most'),
-    ('South Georgia and the South Sandwich Islands', 2, 'most'),
-    ('South Georgia and the South Sandwich Islands', 3, 'some'),
-    ('South Georgia and the South Sandwich Islands', 5, 'all'),
-    ('South Georgia and the South Sandwich Islands', 9, 'most'),
+    (
+        'South Georgia and the South Sandwich Islands',
+        2,
+        'most'
+    ),
+    (
+        'South Georgia and the South Sandwich Islands',
+        3,
+        'some'
+    ),
+    (
+        'South Georgia and the South Sandwich Islands',
+        5,
+        'all'
+    ),
+    (
+        'South Georgia and the South Sandwich Islands',
+        9,
+        'most'
+    ),
     ('South Korea', 2, 'most'),
     ('South Korea', 3, 'some'),
     ('South Korea', 4, 'some'),
@@ -823,12 +835,12 @@ VALUES
     ('Wake Island', 3, 'some'),
     ('Wake Island', 5, 'all'),
     ('Wake Island', 9, 'most'),
-    ('Western Sahara', , 2, 'most'),
-    ('Western Sahara', , 3, 'some'),
-    ('Western Sahara', , 4, 'some'),
-    ('Western Sahara', , 5, 'all'),
-    ('Western Sahara', , 8, 'some'),
-    ('Western Sahara', , 9, 'most'),
+    ('Western Sahara',, 2, 'most'),
+    ('Western Sahara',, 3, 'some'),
+    ('Western Sahara',, 4, 'some'),
+    ('Western Sahara',, 5, 'all'),
+    ('Western Sahara',, 8, 'some'),
+    ('Western Sahara',, 9, 'most'),
     ('Yemen', 1, 'some'),
     ('Yemen', 2, 'most'),
     ('Yemen', 3, 'some'),
@@ -1299,5 +1311,4 @@ VALUES
     ('Hungary', 3, 'some'),
     ('Hungary', 5, 'all'),
     ('Hungary', 8, 'some');
-
 -- SELECT * FROM recomendations;
