@@ -2,7 +2,10 @@
   "development": {
     "username": "root",
 
-    "password": "Queenw00d.",
+
+    "password": "",
+
+
     "database": "vaxapp",
     "host": "127.0.0.1",
     "port": 3306,

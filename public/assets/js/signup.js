@@ -19,6 +19,7 @@ $(document).ready(() => {
     fnameInput.val("");
     emailInput.val("");
     passwordInput.val("");
+
   });
 
   function userSignUp(fname, email, password) {
@@ -30,7 +31,6 @@ $(document).ready(() => {
       .then((data) => {
         console.log(data);
         window.location.replace("/index");
-
       })
       .catch(loginErr);
   }
@@ -39,4 +39,5 @@ $(document).ready(() => {
     $("#alert .msg").text("Error: Please enter a valid input", err.responseJSON);
     $("#alert").fadeIn(500);
   }
+
 });

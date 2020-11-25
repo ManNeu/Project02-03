@@ -33,14 +33,9 @@ require("./routes/profile-api-routes.js")(app);
 require("./routes/destination-api-routes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/signupRoutes.js")(app);
-//require("./routes/getIdNumber.js")(app);
-// require("./routes/apiRoutes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
-// app.listen(PORT, function () {
-//   console.log("App listening on PORT - http://localhost:" + PORT);
-
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log("App is listening on http://localhost:" + PORT);
