@@ -17,6 +17,7 @@ module.exports = function (app) {
       password: req.body.password,
     })
       .then((person) => {
+
         res.redirect(307, "/api/login");
         //res.JSON(person);
       })
@@ -27,7 +28,7 @@ module.exports = function (app) {
 
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   app.get("/api/user_data", function (req, res) {
