@@ -4,10 +4,13 @@
 
 // Dependencies
 // =============================================================
+require('dotenv').config();
 var express = require("express");
 var session = require("express-session");
 const db = require("./models");
 var passport = require("./config/passport");
+
+
 
 // Sets up the Express App
 // =============================================================
@@ -19,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ secret: process.env.SECRET, resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
