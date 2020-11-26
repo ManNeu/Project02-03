@@ -1,4 +1,5 @@
 var userDiseaseChoice;
+var diseaseId;
 
 window.onload = function () {
   var userDiseaseChoice = localStorage.getItem("disease");
@@ -45,8 +46,6 @@ window.onload = function () {
     var userDiseaseChoice = "Shingles";
   }
 
-  console.log(userDiseaseChoice);
-
   $.ajax({
     url: "https://en.wikipedia.org/w/api.php",
     data: {
@@ -71,18 +70,33 @@ window.onload = function () {
   });
 };
 
-// $(".addToCart").on("click", function () {
-//   function addToCart() {
-//     var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
-//     console.log(userIdNumber);
-//     $.post("/api/list", {
-//       person_id: userIdNumber,
-//       disease_id: ,
-//       protected: 0,
-//         {
-//           timestamps: false
-//         }
-//         });
-//   }
-//   addToCart();
-// });
+
+function getdiseaseId(userDiseaseChoice){
+  var userDiseaseChoice = localStorage.getItem("disease");
+  switch(userDiseaseChoice) {
+    case 'Cholera':
+    diseaseId === "1";
+    break;
+    case 'Hepatitis A':
+    diseaseId === "2";
+    break;
+    case 'Hepatitis B':
+    diseaseId === "3";
+    break;
+  }
+}
+
+$(".addToCart").on("click", function () {
+  // function addToCart() {
+    var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
+    console.log(userIdNumber);
+    getdiseaseId();
+    console.log(diseaseId)
+    // $.post("/api/list", {
+    //   person_id: userIdNumber,
+    //   disease_id: diseaseId,
+    //   protected: 0,
+    // }),
+  // addToCart();
+  //}
+});

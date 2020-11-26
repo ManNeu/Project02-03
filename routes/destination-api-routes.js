@@ -78,17 +78,17 @@ module.exports = function (app) {
     });
   });
 
-  // GET route for getting all of the recoms
-  app.get("/api/disease", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Disease.findAll({
-      attributes: ['disease']
-    }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
-      // We have access to the Profiles as an argument inside of the callback function
-      console.log(dbDisease);
-      res.json(dbDisease);
-    });
-  });
+  // // GET route for getting all of the recoms
+  // app.get("/api/disease", function (req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.Disease.findAll({
+  //     attributes: ['disease']
+  //   }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+  //     // We have access to the Profiles as an argument inside of the callback function
+  //     console.log(dbDisease);
+  //     res.json(dbDisease);
+  //   });
+  // });
   app.get("/api/recomendation", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Recomendation.findAll({
@@ -109,7 +109,7 @@ module.exports = function (app) {
   app.get("/api/disease", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Disease.findAll({
-      attributes: ['disease']
+      attributes: ['disease', 'id']
     }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
       console.log(dbDisease);

@@ -1,8 +1,9 @@
+var diseaseId;
+var userChoiceCountry;
+var userChoiceDisease;
+
 function getDiseases() {
   $.get("/api/disease", function (data) {
-    console.log(data);
-    console.log(data[5]);
-
     for (i = 0; i < data.length; i++) {
       var diseaseId = data[i].disease.replace(/\s/g, "");
       $(".diseaseSearch").append(
@@ -19,6 +20,10 @@ function getDiseases() {
     }
   });
 }
+
+$(".diseaseSearchBtn").click(function () {
+  getDiseases();
+});
 
 $(".countrySearch a").click(function () {
   $(".result").empty();
@@ -38,8 +43,4 @@ $(".countrySearch a").click(function () {
     var userChoiceCountry = $(this).text();
     localStorage.setItem("country", userChoiceCountry);
   });
-});
-
-$(".diseaseSearchBtn").click(function () {
-  getDiseases();
 });
