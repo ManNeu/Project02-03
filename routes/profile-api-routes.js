@@ -45,19 +45,6 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/disease", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Disease.findAll({
-      attributes: ['disease']
-    }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
-      // We have access to the Profiles as an argument inside of the callback function
-      console.log(dbDisease);
-      res.json(dbDisease);
-    });
-  });
-
-
-  
   // DELETE FROM SHOPPING LIST
   app.delete("/api/profile/:id", function(req, res) {
     db.Profile.destroy({

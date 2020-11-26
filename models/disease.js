@@ -1,12 +1,17 @@
+const { Model } = require('sequelize');
+
 module.exports = function (sequelize, DataTypes) {
-  var Disease = sequelize.define(
-    "Disease",
+  class Disease extends Model {}
+  Disease.init(
     {
       disease: DataTypes.STRING,
+      
       // complete: DataTypes.BOOLEAN,
     },
     {
       timestamps: false,
+      sequelize,
+      modelName: "Disease",
     }
   );
 

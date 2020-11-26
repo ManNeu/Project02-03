@@ -10,8 +10,6 @@ var session = require("express-session");
 const db = require("./models");
 var passport = require("./config/passport");
 
-
-
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -39,7 +37,7 @@ require("./routes/signupRoutes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true}).then(() => {
   app.listen(PORT, () => {
     console.log("App is listening on http://localhost:" + PORT);
   });
