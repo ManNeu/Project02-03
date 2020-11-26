@@ -45,3 +45,5 @@ CREATE TABLE profiles(
     lifetime BOOLEAN NOT NULL DEFAULT false, 
     PRIMARY KEY(id)
 );
+
+
