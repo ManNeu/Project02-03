@@ -14,10 +14,10 @@ module.exports = function (app) {
 
   // var userChoiceCountry;
 
-// window.onload = function () {
+  // window.onload = function () {
   // var userChoiceCountry = localStorage.getItem("country");
   // $(".contInfo h2").append(userChoiceCountry);
-// };
+  // };
   // // GET route for getting all of the protections
   // app.get("/api/destinations", function (req, res) {
   //   // findAll returns all entries for a table when used with no options
@@ -42,7 +42,7 @@ module.exports = function (app) {
       where: {
         priority: "all",
         country_id: "angola"
-    },
+      },
       include: [db.Disease]
     }).then(function (dbRecomendation) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
@@ -51,7 +51,61 @@ module.exports = function (app) {
     });
   });
 
-    // GET route for getting all of the recoms
+  // GET route for getting all of the recoms
+  app.get("/api/disease", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Disease.findAll({
+      attributes: ['disease']
+    }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      // We have access to the Profiles as an argument inside of the callback function
+      console.log(dbDisease);
+      res.json(dbDisease);
+    });
+  });
+  app.get("/api/recomendation", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Recomendation.findAll({
+      attributes: ['country_id', 'disease_id', 'priority'],
+      where: {
+        priority: "most",
+        country_id: "angola"
+      },
+      include: [db.Disease]
+    }).then(function (dbRecomendation) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      // We have access to the Profiles as an argument inside of the callback function
+      console.log(dbRecomendation);
+      res.json(dbRecomendation);
+    });
+  });
+
+  // GET route for getting all of the recoms
+  app.get("/api/disease", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Disease.findAll({
+      attributes: ['disease']
+    }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      // We have access to the Profiles as an argument inside of the callback function
+      console.log(dbDisease);
+      res.json(dbDisease);
+    });
+  });
+  app.get("/api/recomendation", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Recomendation.findAll({
+      attributes: ['country_id', 'disease_id', 'priority'],
+      where: {
+        priority: "some",
+        country_id: "angola"
+      },
+      include: [db.Disease]
+    }).then(function (dbRecomendation) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      // We have access to the Profiles as an argument inside of the callback function
+      console.log(dbRecomendation);
+      res.json(dbRecomendation);
+    });
+  });
+
+  // GET route for getting all of the recoms
   app.get("/api/disease", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Disease.findAll({
@@ -64,7 +118,6 @@ module.exports = function (app) {
   });
 
 
-  
   // // DELETE FROM SHOPPING LIST
   // app.delete("/api/profile/:id", function(req, res) {
   //   db.Profile.destroy({
@@ -77,29 +130,29 @@ module.exports = function (app) {
   // });
 
 
-// app.delete("/api/disease", function (req, res) {
-//   // findAll returns all entries for a table when used with no options
-//   db.Disease.findAll({
-//     attributes: ['disease']
-//   }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
-//     // We have access to the Profiles as an argument inside of the callback function
-//     console.log(dbDisease);
-//     res.json(dbDisease);
-//   });
-// });
+  // app.delete("/api/disease", function (req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.Disease.findAll({
+  //     attributes: ['disease']
+  //   }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+  //     // We have access to the Profiles as an argument inside of the callback function
+  //     console.log(dbDisease);
+  //     res.json(dbDisease);
+  //   });
+  // });
 
-// router.delete("/api/profile", function(req, res) {
-//   var listItem = "id = " + req.params.id;
+  // router.delete("/api/profile", function(req, res) {
+  //   var listItem = "id = " + req.params.id;
 
-//   app.delete(listItem, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  //   app.delete(listItem, function(result) {
+  //     if (result.affectedRows == 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     } else {
+  //       res.status(200).end();
+  //     }
+  //   });
+  // });
 
 
 };
