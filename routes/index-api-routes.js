@@ -41,7 +41,7 @@ module.exports = function (app) {
   app.get("/api/disease", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Disease.findAll({
-      attributes: ['disease, id']
+      attributes: ['disease', 'id']
     }).then(function (dbDisease) {   
       // We have access to the Profiles as an argument inside of the callback function
       console.log(dbDisease);
