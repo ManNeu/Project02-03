@@ -14,7 +14,8 @@ getRecomendationsAll();
 // getRecomendationsSome();
 
 function getRecomendationsAll() {
-  $.get("/api/recomendation", function(data) {
+  var userChoiceCountry = localStorage.getItem("country");
+  $.get(`/api/recomendation/${userChoiceCountry}`, function(data) {
     console.log(data);
     initializeRowsAll(data);
   });

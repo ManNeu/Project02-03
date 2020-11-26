@@ -17,9 +17,10 @@ module.exports = function (app) {
   app.get("/api/protection", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: ['disease_id', 'vaxdate', 'protected'],
+      attributes: [ 'id', 'disease_id', 'vaxdate', 'protected'],
       where: {
-        protected: 1
+        protected: 1,
+        // person_id: "2"
     },
       include: [db.Disease]
     }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
@@ -33,9 +34,11 @@ module.exports = function (app) {
   app.get("/api/profile", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: ['disease_id', 'vaxdate', 'protected'],
+      attributes: [ 'id', 'disease_id', 'person_id', 'vaxdate', 'protected'],
       where: {
-        protected: 0
+        protected: 0,
+        // person_id: "2"
+        // person_id: req.params.id
     },
       include: [db.Disease]
     }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
@@ -59,14 +62,20 @@ module.exports = function (app) {
 
   
   // DELETE FROM SHOPPING LIST
-  app.delete("/api/profile/:id", function(req, res) {
+  app.delete("/api/profiles/:id", function(req, res) {
+    // console.log(req.params.id);
     db.Profile.destroy({
       where: {
         id: req.params.id
+        // id: shopping.Disease.id
       }
     }).then(function(dbProfile) {
       res.json(dbProfile);
-    });
+    })
+    // .catch(err){
+    //   res.403
+    // }
+     
   });
 
 

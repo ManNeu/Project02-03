@@ -35,13 +35,13 @@ module.exports = function (app) {
   // });
 
   // GET route for getting all of the protections
-  app.get("/api/recomendation", function (req, res) {
+  app.get("/api/recomendation/:country", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Recomendation.findAll({
       attributes: ['country_id', 'disease_id', 'priority'],
       where: {
         priority: "all",
-        country_id: "angola"
+        country_id: req.params.country
     },
       include: [db.Disease]
     }).then(function (dbRecomendation) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
