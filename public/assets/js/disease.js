@@ -10,7 +10,7 @@ window.onload = function () {
     var userDiseaseChoice = "Coronavirus_disease_2019";
   }
 
-  if (userDiseaseChoice === "Measels") {
+  if (userDiseaseChoice === "Measels" || userDiseaseChoice === "Measels ") {
     var userDiseaseChoice = "Measles";
   }
 
@@ -30,7 +30,7 @@ window.onload = function () {
     var userDiseaseChoice = "tetanus";
   }
 
-  if (userDiseaseChoice === "Pertussis") {
+  if (userDiseaseChoice === "Pertussis" || userDiseaseChoice === 'Pertussis ') {
     var userDiseaseChoice = "Whooping_cough";
   }
 
@@ -71,26 +71,11 @@ window.onload = function () {
 };
 
 
-function getdiseaseId(userDiseaseChoice){
-  var userDiseaseChoice = localStorage.getItem("disease");
-  switch(userDiseaseChoice) {
-    case 'Cholera':
-    diseaseId === "1";
-    break;
-    case 'Hepatitis A':
-    diseaseId === "2";
-    break;
-    case 'Hepatitis B':
-    diseaseId === "3";
-    break;
-  }
-}
-
 $(".addToCart").on("click", function () {
   // function addToCart() {
     var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
     console.log(userIdNumber);
-    getdiseaseId();
+
     console.log(diseaseId)
     // $.post("/api/list", {
     //   person_id: userIdNumber,
