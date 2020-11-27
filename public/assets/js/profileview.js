@@ -1,23 +1,16 @@
 $(document).ready(function() {
-  // // Getting a reference to the input field where user adds a new protection
-  // var $newItemInput = $("input.new-item");
-  // // Our new protections will go inside the protectionContainer
   var $protectionContainer = $(".protection-container");
   var $shoppingContainer = $(".shopping-container");
+  var postCategorySelect = $("#category");
 
-  // // Adding event listeners for deleting, editing, and adding protections
-  // $(document).on("click", "button.delete", deleteProtection);
-  // $(document).on("click", "button.complete", toggleComplete);
-  // $(document).on("click", ".protection-item", editProtection);
-  // $(document).on("keyup", ".protection-item", finishEdit);
-  // $(document).on("blur", ".protection-item", cancelEdit);
-  // $(document).on("submit", "#protection-form", insertProtection);
-  // $(document).on("submit", "#author-form", handleAuthorFormSubmit);
   $(document).on("click", ".delete-profile", deleteShoppingItem);
 
   // Getting protections from database when page loads
   getProtections();
   getShoppingCart();
+
+
+
 
     // This function grabs protections from the database and updates the view
     function getProtections() {
@@ -70,19 +63,6 @@ $(document).ready(function() {
     return $newInputRow;
   }
 
-
-    // // This function grabs protections from the database and updates the view
-    // function getProtections() {
-    //   $.get("/api/profile", function(data) {
-    //     // protections = data;
-    //     console.log(data);
-    //     initializeRows(data);
-    //     initializeCart(data);
-    //   });
-    // }
-
-
-    
   // This function resets the protections displayed with new protections from the database
   function initializeCart(shoppingRows) {
     $shoppingContainer.empty();
@@ -96,14 +76,17 @@ $(document).ready(function() {
 //   // This function constructs a shoppping-item row
   function createNewCart(shopping) {
     console.log(shopping);
+    console.log(shopping.Disease.id);
+    console.log(shopping.id);
     var $newInputCart = $(
       [
         "<li class='list-group-item shoppping-item'>",
         "<button class='complete btn btn-primary'> vaccinate </button>",
-        "<button class='delete-profile btn btn-danger'> delete </button>",
+        "<button class='delete-profile btn btn-danger' id='"+ parseInt(shopping.id) +"'> delete </button>",
         " ",
         "<span>",
         shopping.Disease.disease,
+        // shopping.Disease.id,
         "</span>",
         "</li>"
       ].join("")
@@ -117,39 +100,59 @@ $(document).ready(function() {
     }
     return $newInputCart;
   }
-  // // This function inserts a new protection into our database and then updates the view
-  // function insertProtection(event) {
-  //   event.preventDefault();
-  //   var protection = {
-  //     text: $newItemInput.val().trim(),
-  //     complete: false
-  //   };
 
-  //   $.post("/api/profile", protection, getProtection);
-  //   $newItemInput.val("");
-  // }
+  // DELETE
+  // This function figures out which post we want to delete and then calls deleteItem
+  function deleteShoppingItem(event) {
+    var currentItem = $(event.currentTarget)
+      .prop("id");
+      console.log(currentItem);
+      deleteItem(currentItem);
+  }
 
-    // // Function for handling what happens when the delete button is pressed
-    // function handleDeleteButtonPress() {
-    //   var listItemData = $(this).parent("li").data("disease");
-    //   var id = listItemData.id;
-    //   $.ajax({
-    //     method: "DELETE",
-    //     url: "/api/profile/" + id
-    //   })
-    //     // .then(getAuthors);
+  function deleteItem(currentItem) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/profiles/" + currentItem
+    })
+      .then(function() {
+        location.reload();
+        // initializeCart(postCategorySelect.val());
+      });
+  }
+
+    // // UPDATE  - DRAFT CODE - NOT YET READY
+    // // This function figures out which post we want to Update and then calls updateItem
+    // function updateShoppingItem(event) {
+    //   var currentItem = $(event.currentTarget)
+    //     .prop("id");
+    //     console.log(currentItem);
+    //     updateItem(currentItem);
     // }
-
-
-    function deleteShoppingItem(id) {
-      $.ajax({
-        method: "DELETE",
-        url: "/api/profiles/" + id
-      })
-        // .then(function() {
-        //   getProfiles(profileCategorySelect.val());
-        // });
-    }
-
+  
+    // function updateItem(currentItem) {
+    //   $.ajax({
+    //     method: "UPDATE",
+    //     data: newSleepState
+    //     url: "/api/profiles/" + currentItem
+    //   })
+    //     .then(function() {
+    //       location.reload();
+    //       // initializeCart(postCategorySelect.val());
+    //     });
+    // }
+// 
+// 
+        // // Send the PUT request.
+        // $.ajax("/api/cats/" + id, {
+        //   type: "PUT",
+        //   data: newSleepState
+        // }).then(
+        //   function() {
+        //     console.log("changed sleep to", newSleep);
+        //     // Reload the page to get the updated list
+        //     location.reload();
+        //   }
+        // );
 
 });
