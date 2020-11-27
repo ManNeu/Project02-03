@@ -73,3 +73,7 @@ SOFTWARE.
 Chloe Blackwell<br>
 Email: chloeblackwell2@hotmail.com
 
+Noriyuki Ishii <br>
+Email: nishii.dev.syd@gmail.com<br>
+GitHub: https://github.com/noriyuki-ishii-820
+
