@@ -39,3 +39,16 @@ p {
   pointer-events: none;
   color: black;
 }
+
+.disappear {
+  display:none;
+}
+
+.completeMessage {
+  border: 2px blue solid;
+  background-color: skyblue;
+  color:blue;
+  text-align:center;
+  line-height:50px;
+  height:50px;
+}

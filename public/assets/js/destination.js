@@ -34,12 +34,13 @@ function createAllRow(recomendationAll) {
       // protection.disease_id, 
       recomendationAll.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary'> Add to Cart </button>",
+      "<button class='complete btn btn-primary addToCart'> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
-    ].join("")
+    ].join("") 
   );
+  
   $newInputRow.find("button.delete").data("id", recomendationAll.id);
   $newInputRow.find("input.edit").css("display", "none");
   $newInputRow.data("protection", recomendationAll);
@@ -75,12 +76,13 @@ function createMostRow(recomendationMost) {
       // protection.disease_id, 
       recomendationMost.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary'> Add to Cart </button>",
+      "<button class='complete btn btn-primary addToCart' id =" + recomendationMost.Disease.id + "> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
     ].join("")
   );
+
   $newInputRow.find("button.delete").data("id", recomendationMost.id);
   $newInputRow.find("input.edit").css("display", "none");
   $newInputRow.data("protection", recomendationMost);
@@ -115,17 +117,38 @@ function createSomeRow(recomendationSome) {
       // protection.disease_id, 
       recomendationSome.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary'> Add to Cart </button>",
+      "<button class='complete btn btn-primary addToCart'> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
     ].join("")
   );
+ 
   $newInputRow.find("button.delete").data("id", recomendationSome.id);
   $newInputRow.find("input.edit").css("display", "none");
   $newInputRow.data("protection", recomendationSome);
   if (recomendationSome.complete) {
     $newInputRow.find("span").css("text-decoration", "line-through");
-  }
+  }  
   return $newInputRow;
 }
+
+// function addToCart (){
+// $(".addToCart").on("click", function () {
+
+//   alert("Hi!")
+//   // var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
+  // var disease_id = $(this).attr("id");
+
+  // console.log(person_id, disease_id)
+
+  // var newDisease = {
+  //   person_id: person_id,
+  //   disease_id:disease_id,
+  //   protected: 0,
+  // };
+
+  // console.log(newDisease);
+
+  // $.post("/api/profile", newDisease);
+
