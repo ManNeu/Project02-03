@@ -33,7 +33,7 @@ function createAllRow(recomendationAll) {
       // protection.disease_id, 
       recomendationAll.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary'> vaccinate </button>",
+      "<button class='complete btn btn-primary'> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
@@ -65,7 +65,7 @@ function initializeRowsMost(recomendationsMostRows) {
   $recomendationMostContainer.prepend(rowsMostToAdd);
 }
 //   // This function constructs a protection-item row
-function createMostRow(recomendationAll) {
+function createMostRow(recomendationMost) {
   console.log(recomendationMost);
   var $newInputRow = $(
     [
@@ -74,7 +74,7 @@ function createMostRow(recomendationAll) {
       // protection.disease_id, 
       recomendationMost.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary'> vaccinate </button>",
+      "<button class='complete btn btn-primary'> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
@@ -82,7 +82,7 @@ function createMostRow(recomendationAll) {
   );
   $newInputRow.find("button.delete").data("id", recomendationMost.id);
   $newInputRow.find("input.edit").css("display", "none");
-  $newInputRow.data("protection", recomendationAll);
+  $newInputRow.data("protection", recomendationMost);
   if (recomendationMost.complete) {
     $newInputRow.find("span").css("text-decoration", "line-through");
   }
