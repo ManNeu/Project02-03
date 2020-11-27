@@ -7,12 +7,11 @@
 
 // Requiring our Protection model
 var db = require("../models");
+const passport = require("../config/passport");
 
 // Routes
 // =============================================================
 module.exports = function (app) {
-
-  
   // GET route for getting all of the protections
   app.get("/api/protection", function (req, res) {
     // findAll returns all entries for a table when used with no options
@@ -30,6 +29,23 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/profile", passport.authenticate("local"), (req, res) => {
+        
+    db.Profile.create(
+      {
+      person_id: req.body.person_id,
+      disease_id: req.body.disease_id,
+      protected: req.body.protected
+      }
+    )
+      .then((diseaseList) => {
+        //res.JSON(diseaseList);
+        res.redirect(307, "/api/profile");
+      })
+      .catch((err) => {
+        res.status(401).json(err);
+      });
+  });
   // GET route for getting all of the shopping list items
   app.get("/api/profile", function (req, res) {
     // findAll returns all entries for a table when used with no options
@@ -64,6 +80,9 @@ module.exports = function (app) {
     // }
      
   });
+
+
+ 
 
 
 // app.delete("/api/disease", function (req, res) {
