@@ -16,13 +16,14 @@ module.exports = function (app) {
   app.get("/api/protection", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: [ 'id', 'disease_id', 'vaxdate', 'protected'],
+      attributes: ["id", "disease_id", "vaxdate", "protected"],
       where: {
         protected: 1,
         // person_id: "2"
-    },
-      include: [db.Disease]
-    }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      },
+      include: [db.Disease],
+    }).then(function (dbProfile) {
+      // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
       console.log(dbProfile);
       res.json(dbProfile);
@@ -33,14 +34,15 @@ module.exports = function (app) {
   app.get("/api/profile", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
-      attributes: [ 'id', 'disease_id', 'person_id', 'vaxdate', 'protected'],
+      attributes: ["id", "disease_id", "person_id", "vaxdate", "protected"],
       where: {
         protected: 0,
         // person_id: "2"
         // person_id: req.params.id
-    },
-      include: [db.Disease]
-    }).then(function (dbProfile) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+      },
+      include: [db.Disease],
+    }).then(function (dbProfile) {
+      // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
       console.log(dbProfile);
       res.json(dbProfile);
@@ -61,22 +63,41 @@ module.exports = function (app) {
 });
 
   // DELETE FROM SHOPPING LIST
-  app.delete("/api/profiles/:id", function(req, res) {
-    // console.log(req.params.id);
+  app.delete("/api/profiles/:id", function (req, res) {
+    console.log(req.params.id);
     db.Profile.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
         // id: shopping.Disease.id
-      }
-    }).then(function(dbProfile) {
+      },
+    }).then(function (dbProfile) {
       res.json(dbProfile);
-    })
+    });
     // .catch(err){
     //   res.403
     // }
-     
   });
 
+  // EDIT FROM SHOPPING LIST
+  // app.put("/api/profiles/:id", function(req, res) {
+  //       console.log(req.params.id);
+  //       console.log("condition", condition);
+  //   db.Profile.update(
+  //     req.body,
+  //     {
+  //       where: {
+  //         id: req.body.id
+  //       }
+  //     }).then(function(dbProfile) {
+  //     res.json(dbProfile);
+  //   });
+  // });
+
+  // app.put("/api/profiles/:id", function (req, res) {
+  //   var condition = "id = " + req.params.id;
+
+// vax-btn-started
+  //   console.log("condition", condition);
 
  
 
@@ -92,18 +113,45 @@ module.exports = function (app) {
 //   });
 // });
 
-// router.delete("/api/profile", function(req, res) {
-//   var listItem = "id = " + req.params.id;
 
-//   app.delete(listItem, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  //   db.Profile.update(
+  //     {
+  //       // protected: req.params.protected
+  //       protected: 0,
+  //     },
+  //     condition,
+  //     function (result) {
+  //       if (result.changedRows == 1) {
+  //         // If no rows were changed, then the ID must not exist, so 404
+  //         return res.status(404).end();
+  //       } else {
+  //         res.status(200).end();
+  //       }
+  //     }
+  //   );
+  // });
 
 
+
+  
+  app.put("/api/profiles/:id", function (req, res) {
+  //   var condition = "id = " + req.params.id;
+  //   console.log("condition", condition);
+    db.Profile.update({
+      attributes: ["protected"],
+        where: {
+          id: req.params.id,
+        }
+  //     },
+  //     condition,
+  //     function (result) {
+  //       if (result.changedRows == 1) {
+  //         // If no rows were changed, then the ID must not exist, so 404
+  //         return res.status(404).end();
+  //       } else {
+  //         res.status(200).end();
+  //       }
+      }
+    );
+  });
 };
