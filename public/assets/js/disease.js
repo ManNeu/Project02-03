@@ -86,6 +86,8 @@ $(".addToCart").on("click", function (event) {
 
   $.post("/api/profile", newDisease);
 
+  $(".completeMessage").removeClass("disappear")
+
 });
 
 
