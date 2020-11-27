@@ -1,8 +1,6 @@
 var userDiseaseChoice;
 var diseaseId;
 
-
-
 window.onload = function () {
   var userDiseaseChoice = localStorage.getItem("disease");
   $(".diseaseName").text(userDiseaseChoice);
@@ -72,23 +70,23 @@ window.onload = function () {
 
 
 
-$(".addToCart").on("click", function (person_id, disease_id) {
-
+$(".addToCart").on("click", function (event) {
+  event.preventDefault();
+  
   var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
   var disease_id = parseInt(localStorage.getItem("diseaseId"));  
 
-  console.log(person_id, disease_id)
-
-  $.post("/api/profile", {
+  var newDisease = {
     person_id: person_id,
     disease_id:disease_id,
     protected: 0,
-  })  
-  .then((data) => {
-    console.log(data);
-    window.location.replace("/profile");
-  })
-})
+  };
+
+  console.log(newDisease);
+
+  $.post("/api/profile", newDisease);
+
+});
 
 
 

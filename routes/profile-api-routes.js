@@ -29,23 +29,6 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/profile", passport.authenticate("local"), (req, res) => {
-        
-    db.Profile.create(
-      {
-      person_id: req.body.person_id,
-      disease_id: req.body.disease_id,
-      protected: req.body.protected
-      }
-    )
-      .then((diseaseList) => {
-        //res.JSON(diseaseList);
-        res.redirect(307, "/api/profile");
-      })
-      .catch((err) => {
-        res.status(401).json(err);
-      });
-  });
   // GET route for getting all of the shopping list items
   app.get("/api/profile", function (req, res) {
     // findAll returns all entries for a table when used with no options
@@ -63,6 +46,19 @@ module.exports = function (app) {
       res.json(dbProfile);
     });
   });
+
+  app.post("/api/profile", function (req, res) {
+    console.log(req.body)
+  db.Profile.create(
+    {
+    person_id: req.body.person_id,
+    disease_id: req.body.disease_id,
+    protected: req.body.protected,
+    }).then(function(diseaseList) {
+      res.json(diseaseList)
+    })
+  
+});
 
   // DELETE FROM SHOPPING LIST
   app.delete("/api/profiles/:id", function(req, res) {
