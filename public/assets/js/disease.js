@@ -61,27 +61,32 @@ window.onload = function () {
         "MyCoolTool/1.1 (http://example.com/MyCoolTool/; MyCoolTool@example.com) BasedOnSuperLib/1.4",
     },
     success: function (data) {
-      console.log(data);
-
       var markup = data.parse.text["*"];
       var i = $("<div></div>").html(markup);
       $(".diseaseDescription").html(i);
     },
-  });
+  })  
 };
 
 
-$(".addToCart").on("click", function () {
-  // function addToCart() {
-    var userIdNumber = JSON.parse(localStorage.getItem("user")).id;
-    console.log(userIdNumber);
 
-    console.log(diseaseId)
-    // $.post("/api/list", {
-    //   person_id: userIdNumber,
-    //   disease_id: diseaseId,
-    //   protected: 0,
-    // }),
-  // addToCart();
-  //}
+$(".addToCart").on("click", function (event) {
+  event.preventDefault();
+  
+  var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
+  var disease_id = parseInt(localStorage.getItem("diseaseId"));  
+
+  var newDisease = {
+    person_id: person_id,
+    disease_id:disease_id,
+    protected: 0,
+  };
+
+  console.log(newDisease);
+
+  $.post("/api/profile", newDisease);
+
 });
+
+
+

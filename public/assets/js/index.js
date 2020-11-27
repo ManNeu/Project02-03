@@ -2,6 +2,18 @@ var diseaseId;
 var userChoiceCountry;
 var userChoiceDisease;
 
+function getDiseaseId(){
+  $.get("/api/disease", function (data) {
+    var userDiseaseChoice = localStorage.getItem("disease");
+      for (i = 0; i < data.length; i++){
+          if (data[i].disease === userDiseaseChoice) {
+            var diseaseId = data[i].id
+            localStorage.setItem("diseaseId", diseaseId);
+          }
+      }
+})
+}
+
 function getDiseases() {
   $.get("/api/disease", function (data) {
     for (i = 0; i < data.length; i++) {
@@ -14,6 +26,7 @@ function getDiseases() {
           "</a>"
       );
       $(".diseaseSearch a").on("click", function () {
+        getDiseaseId();
         var userChoiceDisease = $(this).text();
         localStorage.setItem("disease", userChoiceDisease);
       });
@@ -24,6 +37,7 @@ function getDiseases() {
 $(".diseaseSearchBtn").click(function () {
   getDiseases();
 });
+
 
 $(".countrySearch a").click(function () {
   $(".result").empty();

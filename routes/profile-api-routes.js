@@ -96,7 +96,23 @@ module.exports = function (app) {
   // app.put("/api/profiles/:id", function (req, res) {
   //   var condition = "id = " + req.params.id;
 
+// vax-btn-started
   //   console.log("condition", condition);
+
+ 
+
+
+// app.delete("/api/disease", function (req, res) {
+//   // findAll returns all entries for a table when used with no options
+//   db.Disease.findAll({
+//     attributes: ['disease']
+//   }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
+//     // We have access to the Profiles as an argument inside of the callback function
+//     console.log(dbDisease);
+//     res.json(dbDisease);
+//   });
+// });
+
 
   //   db.Profile.update(
   //     {
