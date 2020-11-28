@@ -79,8 +79,8 @@ $(document).ready(function () {
       [
         "<li class='list-group-item shoppping-item'>",
         // "<button class='vaccinate-profile btn btn-primary id='" + parseInt(shopping.id) + "'> vaccinate </button>",
-        "<button class='delete-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> delete </button>",
-        "<button class='vax-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> vax </button>",
+        "<button class='delete-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> Delete </button>",
+        "<button class='vax-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> Vaccinate </button>",
         " ",
         "<span>",
         shopping.Disease.disease,
@@ -105,15 +105,19 @@ $(document).ready(function () {
   function vaxShoppingItem(event) {
     var currentItem = $(event.currentTarget).prop("id");
     console.log(currentItem);
+    console.log("one");
     vaxItem(currentItem);
   }
 
   function vaxItem(currentItem) {
+    console.log(currentItem);
+    console.log("two");
     $.ajax({
       method: "PUT",
       url: "/api/profiles/" + currentItem,
     }).then(function () {
       location.reload();
+      console.log("four");
       // initializeCart(postCategorySelect.val());
     });
   }

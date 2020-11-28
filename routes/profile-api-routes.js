@@ -9,6 +9,9 @@
 var db = require("../models");
 const passport = require("../config/passport");
 
+// const now = moment();
+// const date = now.format("DD MMMM YYYY");
+
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -78,80 +81,29 @@ module.exports = function (app) {
     // }
   });
 
-  // EDIT FROM SHOPPING LIST
-  // app.put("/api/profiles/:id", function(req, res) {
-  //       console.log(req.params.id);
-  //       console.log("condition", condition);
-  //   db.Profile.update(
-  //     req.body,
-  //     {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     }).then(function(dbProfile) {
-  //     res.json(dbProfile);
-  //   });
-  // });
-
-  // app.put("/api/profiles/:id", function (req, res) {
-  //   var condition = "id = " + req.params.id;
-
-// vax-btn-started
-  //   console.log("condition", condition);
-
- 
-
-
-// app.delete("/api/disease", function (req, res) {
-//   // findAll returns all entries for a table when used with no options
-//   db.Disease.findAll({
-//     attributes: ['disease']
-//   }).then(function (dbDisease) {    // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
-//     // We have access to the Profiles as an argument inside of the callback function
-//     console.log(dbDisease);
-//     res.json(dbDisease);
-//   });
-// });
-
-
-  //   db.Profile.update(
-  //     {
-  //       // protected: req.params.protected
-  //       protected: 0,
-  //     },
-  //     condition,
-  //     function (result) {
-  //       if (result.changedRows == 1) {
-  //         // If no rows were changed, then the ID must not exist, so 404
-  //         return res.status(404).end();
-  //       } else {
-  //         res.status(200).end();
-  //       }
-  //     }
-  //   );
-  // });
-
-
-
   
-  app.put("/api/profiles/:id", function (req, res) {
-  //   var condition = "id = " + req.params.id;
-  //   console.log("condition", condition);
-    db.Profile.update({
-      attributes: ["protected"],
-        where: {
-          id: req.params.id,
-        }
-  //     },
-  //     condition,
-  //     function (result) {
-  //       if (result.changedRows == 1) {
-  //         // If no rows were changed, then the ID must not exist, so 404
-  //         return res.status(404).end();
-  //       } else {
-  //         res.status(200).end();
-  //       }
-      }
-    );
+
+
+
+  app.put('/api/profiles/:id', function (req, res) {
+    //   var condition = "id = " + req.params.id;
+    //   console.log("condition", condition);
+    console.log("three");
+    db.Profile.update({protected: 1, 
+      // vaxdate: date
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    // }).update({vaxdate: Sequelize.literal('CURRENT_TIMESTAMP')}, {
+    //   where: {
+    //     id: req.params.id,
+    //   },
+    }).then(function (dbProfile) {
+      res.json(dbProfile);
+    });
   });
+
+  // Sequelize.literal('CURRENT_TIMESTAMP'),
+
 };
