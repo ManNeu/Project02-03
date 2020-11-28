@@ -97,6 +97,10 @@ p {
   min-width: 200px;
   }
 
+  .btnplacement {
+    align-items: center; 
+  }
+
   .recolist, .vaxlist {
     /* position: absolute; */
     width: 400px;

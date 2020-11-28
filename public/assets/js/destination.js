@@ -8,6 +8,9 @@ window.onload = function () {
   $(".contInfo h2").append(userChoiceCountry);
 };
 
+
+
+
 function getRecomendationsAll() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationAll/${userChoiceCountry}`, function (data) {
