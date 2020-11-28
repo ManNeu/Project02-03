@@ -8,9 +8,7 @@ window.onload = function () {
   $(".contInfo h2").append(userChoiceCountry);
 };
 
-
-
-
+// RECOMMENDATIONS FOR ALL
 function getRecomendationsAll() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationAll/${userChoiceCountry}`, function (data) {
@@ -19,7 +17,6 @@ function getRecomendationsAll() {
     addToCart()
   });
 }
-
 function initializeRowsAll(recomendationsAllRows) {
   $recomendationAllContainer.empty();
   var rowsAllToAdd = [];
@@ -28,7 +25,6 @@ function initializeRowsAll(recomendationsAllRows) {
   }
   $recomendationAllContainer.prepend(rowsAllToAdd);
 }
-
 //   // This function constructs a protection-item row
 function createAllRow(recomendationAll) {
   console.log(recomendationAll);
@@ -53,9 +49,9 @@ function createAllRow(recomendationAll) {
     $newInputRow.find("span").css("text-decoration", "line-through");
   }
   return $newInputRow;
-  
 }
 
+// RECOMMENDATIONS FOR MOST
 function getRecomendationsMost() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationMost/${userChoiceCountry}`, function (data) {
@@ -100,6 +96,7 @@ function createMostRow(recomendationMost) {
   return $newInputRow;
 }
 
+// RECOMMENDATIONS FOR SOME
 function getRecomendationsSome() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationSome/${userChoiceCountry}`, function (data) {
@@ -115,7 +112,6 @@ function initializeRowsSome(recomendationsSomeRows) {
     rowsSomeToAdd.push(createSomeRow(recomendationsSomeRows[i]));
   }
   $recomendationSomeContainer.prepend(rowsSomeToAdd);
-
 }
 //   // This function constructs a protection-item row
 function createSomeRow(recomendationSome) {
@@ -133,16 +129,17 @@ function createSomeRow(recomendationSome) {
       "</li>"
     ].join("")
   );
- 
   $newInputRow.find("button.delete").data("id", recomendationSome.id);
   $newInputRow.find("input.edit").css("display", "none");
   $newInputRow.data("protection", recomendationSome);
+ 
   if (recomendationSome.complete) {
     $newInputRow.find("span").css("text-decoration", "line-through");
   }  
   return $newInputRow;
 }
 
+// ADD TO CART
 function addToCart(){
  $(".addToCart").on("click", function (){
  var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
@@ -164,8 +161,6 @@ function addToCart(){
   
 })
 }
-
-
 
 getRecomendationsAll();
 getRecomendationsMost();
