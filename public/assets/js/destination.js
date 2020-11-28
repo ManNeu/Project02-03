@@ -2,20 +2,22 @@ var $recomendationAllContainer = $(".recomendation-all-container");
 var $recomendationMostContainer = $(".recomendation-most-container");
 var $recomendationSomeContainer = $(".recomendation-some-container");
 var userChoiceCountry;
+
 window.onload = function () {
   var userChoiceCountry = localStorage.getItem("country");
   $(".contInfo h2").append(userChoiceCountry);
 };
-getRecomendationsAll();
-getRecomendationsMost();
-getRecomendationsSome();
+
 function getRecomendationsAll() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationAll/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsAll(data);
+    
   });
+  addToCart()
 }
+
 function initializeRowsAll(recomendationsAllRows) {
   $recomendationAllContainer.empty();
   var rowsAllToAdd = [];
@@ -24,6 +26,7 @@ function initializeRowsAll(recomendationsAllRows) {
   }
   $recomendationAllContainer.prepend(rowsAllToAdd);
 }
+
 //   // This function constructs a protection-item row
 function createAllRow(recomendationAll) {
   console.log(recomendationAll);
@@ -34,22 +37,22 @@ function createAllRow(recomendationAll) {
       // protection.disease_id, 
       recomendationAll.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary addToCart'> Add to Cart </button>",
+      "<button class='complete btn btn-primary addToCart' id =" + recomendationAll.Disease.id + "> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
     ].join("") 
   );
-  
   $newInputRow.find("button.delete").data("id", recomendationAll.id);
   $newInputRow.find("input.edit").css("display", "none");
   $newInputRow.data("protection", recomendationAll);
+  
   if (recomendationAll.complete) {
     $newInputRow.find("span").css("text-decoration", "line-through");
   }
   return $newInputRow;
+  
 }
-
 
 function getRecomendationsMost() {
   var userChoiceCountry = localStorage.getItem("country");
@@ -57,7 +60,9 @@ function getRecomendationsMost() {
     console.log(data);
     initializeRowsMost(data);
   });
+
 }
+
 function initializeRowsMost(recomendationsMostRows) {
   $recomendationMostContainer.empty();
   var rowsMostToAdd = [];
@@ -66,6 +71,7 @@ function initializeRowsMost(recomendationsMostRows) {
   }
   $recomendationMostContainer.prepend(rowsMostToAdd);
 }
+
 //   // This function constructs a protection-item row
 function createMostRow(recomendationMost) {
   console.log(recomendationMost);
@@ -95,6 +101,7 @@ function createMostRow(recomendationMost) {
 function getRecomendationsSome() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationSome/${userChoiceCountry}`, function (data) {
+    addToCart();
     console.log(data);
     initializeRowsSome(data);
   });
@@ -106,6 +113,7 @@ function initializeRowsSome(recomendationsSomeRows) {
     rowsSomeToAdd.push(createSomeRow(recomendationsSomeRows[i]));
   }
   $recomendationSomeContainer.prepend(rowsSomeToAdd);
+
 }
 //   // This function constructs a protection-item row
 function createSomeRow(recomendationSome) {
@@ -117,7 +125,7 @@ function createSomeRow(recomendationSome) {
       // protection.disease_id, 
       recomendationSome.Disease.disease,
       " ",
-      "<button class='complete btn btn-primary addToCart'> Add to Cart </button>",
+      "<button class='complete btn btn-primary addToCart' id =" + recomendationSome.Disease.id + "> Add to Cart </button>",
       "</span>",
       "<input type='text' class='edit' style='display: none;'>",
       "</li>"
@@ -133,22 +141,27 @@ function createSomeRow(recomendationSome) {
   return $newInputRow;
 }
 
-// function addToCart (){
-// $(".addToCart").on("click", function () {
+function addToCart(){
+ $(".addToCart").on("click", function (){
+ var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
+  var disease_id = $(this).attr("id");
 
-//   alert("Hi!")
-//   // var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
-  // var disease_id = $(this).attr("id");
+  console.log(person_id, disease_id)
 
-  // console.log(person_id, disease_id)
+  var newDisease = {
+    person_id: person_id,
+    disease_id:disease_id,
+    protected: 0,
+  };
 
-  // var newDisease = {
-  //   person_id: person_id,
-  //   disease_id:disease_id,
-  //   protected: 0,
-  // };
+  console.log(newDisease);
 
-  // console.log(newDisease);
+  $.post("/api/profile", newDisease);
+})
+}
 
-  // $.post("/api/profile", newDisease);
 
+
+getRecomendationsAll();
+getRecomendationsMost();
+getRecomendationsSome();
