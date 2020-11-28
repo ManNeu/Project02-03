@@ -19,10 +19,6 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-.logoutButton {
-  color: white;
-}
-
 .infobox,
 .mw-references-wrap,
 .navigation-not-searchable,
@@ -95,15 +91,16 @@ p {
   width: 500px;
   max-width: 500px;
   min-width: 200px;
-  }
+}
 
-  .recolist, .vaxlist {
-    /* position: absolute; */
-    width: 400px;
-    max-width: 500px;
-    min-width: 300px;
-    margin-bottom: 50px;
-    }
+.recolist,
+.vaxlist {
+  /* position: absolute; */
+  width: 400px;
+  max-width: 500px;
+  min-width: 300px;
+  margin-bottom: 50px;
+}
 
 body {
   background-image: url("./../img/earth.png");
@@ -122,3 +119,8 @@ body {
   }
  } */
 
+.result:hover,
+.userInput:hover {
+  background-color: transparent;
+  color: salmon;
+}
