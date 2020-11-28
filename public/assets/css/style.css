@@ -19,10 +19,6 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-.logoutButton {
-  color: white;
-}
-
 .infobox,
 .mw-references-wrap,
 .navigation-not-searchable,
@@ -42,6 +38,14 @@ p {
 
 .disappear {
   display: none;
+}
+
+.added {
+  border: 2px skyblue;
+  background-color: skyblue;
+  color:white;
+  padding: 5px;
+  border-radius:5px;
 }
 
 .completeMessage {
@@ -97,7 +101,8 @@ p {
   width: 500px;
   max-width: 500px;
   min-width: 200px;
-  }
+}
+
 
   .btnplacement {
     
@@ -111,6 +116,7 @@ p {
     min-width: 300px;
     margin-bottom: 50px;
     }
+
 
 body {
   background-image: url("./../img/earth.png");
@@ -129,3 +135,8 @@ body {
   }
  } */
 
+.result:hover,
+.userInput:hover {
+  background-color: transparent;
+  color: salmon;
+}
