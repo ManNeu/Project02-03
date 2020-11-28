@@ -18,8 +18,9 @@ window.onload = function () {
     var userDiseaseChoice = "Typhoid_fever";
   }
 
-  if (userDiseaseChoice === "Yellow Fever") {
+  if (userDiseaseChoice === "Yellow Fever" || userDiseaseChoice === "Yellow") {
     var userDiseaseChoice = "Yellow_fever";
+
   }
 
   if (userDiseaseChoice === "Japanese Encephalitis") {
