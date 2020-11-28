@@ -24,6 +24,10 @@ module.exports = function (app) {
         protected: 1,
         // person_id: "2"
       },
+      order: [
+        ['vaxdate', 'DESC'],
+        ['id', 'DESC'],
+    ],
       include: [db.Disease],
     }).then(function (dbProfile) {
       // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false

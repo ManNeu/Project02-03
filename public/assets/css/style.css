@@ -94,6 +94,8 @@ p {
   background-color: rgb(108, 133, 214);
 }
 
+
+
 .vaxlist {
   /* position: absolute; */
   width: 500px;
@@ -103,8 +105,9 @@ p {
 
 
   .btnplacement {
-    align-items: center; 
+    
   }
+
 
   .recolist, .vaxlist {
     /* position: absolute; */

@@ -81,6 +81,7 @@ $(document).ready(function () {
         "<span>",
         shopping.Disease.disease,
         "</span>",
+        "</br>",
         "<span class=btnplacement>",
         "<button class='delete-profile btn btn-danger' id='" +
           parseInt(shopping.id) +
