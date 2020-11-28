@@ -40,6 +40,14 @@ p {
   display: none;
 }
 
+.added {
+  border: 2px skyblue;
+  background-color: skyblue;
+  color:white;
+  padding: 5px;
+  border-radius:5px;
+}
+
 .completeMessage {
   border: 2px blue solid;
   background-color: skyblue;

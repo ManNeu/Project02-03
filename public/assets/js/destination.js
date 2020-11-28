@@ -16,9 +16,8 @@ function getRecomendationsAll() {
   $.get(`/api/recomendationAll/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsAll(data);
-    
+    addToCart()
   });
-  addToCart()
 }
 
 function initializeRowsAll(recomendationsAllRows) {
@@ -62,8 +61,8 @@ function getRecomendationsMost() {
   $.get(`/api/recomendationMost/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsMost(data);
+    addToCart();  
   });
-
 }
 
 function initializeRowsMost(recomendationsMostRows) {
@@ -104,9 +103,9 @@ function createMostRow(recomendationMost) {
 function getRecomendationsSome() {
   var userChoiceCountry = localStorage.getItem("country");
   $.get(`/api/recomendationSome/${userChoiceCountry}`, function (data) {
-    addToCart();
     console.log(data);
     initializeRowsSome(data);
+    addToCart();
   });
 }
 function initializeRowsSome(recomendationsSomeRows) {
@@ -160,6 +159,9 @@ function addToCart(){
   console.log(newDisease);
 
   $.post("/api/profile", newDisease);
+
+  $(this).replaceWith('<span class="added">Successfully Added!</span>')
+  
 })
 }
 
