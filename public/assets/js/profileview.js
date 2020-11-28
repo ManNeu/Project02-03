@@ -46,7 +46,6 @@ $(document).ready(function () {
         protection.Disease.disease,
         ", vaccinated on " + protection.vaxdate,
         "</span>",
-        "<input type='text' class='edit' style='display: none;'>",
         "</li>",
       ].join("")
     );
@@ -79,17 +78,19 @@ $(document).ready(function () {
       [
         "<li class='list-group-item shoppping-item'>",
         // "<button class='vaccinate-profile btn btn-primary id='" + parseInt(shopping.id) + "'> vaccinate </button>",
+        "<span>",
+        shopping.Disease.disease,
+        "</span>",
+        "<span class=btnplacement>",
         "<button class='delete-profile btn btn-danger' id='" +
           parseInt(shopping.id) +
           "'> Delete </button>",
         "<button class='vax-profile btn btn-danger' id='" +
           parseInt(shopping.id) +
           "'> Vaccinate </button>",
+          "</span>",
         " ",
-        "<span>",
-        shopping.Disease.disease,
-        // shopping.Disease.id,
-        "</span>",
+
         "</li>",
       ].join("")
     );
