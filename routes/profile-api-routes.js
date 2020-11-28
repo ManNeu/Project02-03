@@ -53,17 +53,15 @@ module.exports = function (app) {
   });
 
   app.post("/api/profile", function (req, res) {
-    console.log(req.body)
-  db.Profile.create(
-    {
-    person_id: req.body.person_id,
-    disease_id: req.body.disease_id,
-    protected: req.body.protected,
-    }).then(function(diseaseList) {
-      res.json(diseaseList)
-    })
-  
-});
+    console.log(req.body);
+    db.Profile.create({
+      person_id: req.body.person_id,
+      disease_id: req.body.disease_id,
+      protected: req.body.protected,
+    }).then(function (diseaseList) {
+      res.json(diseaseList);
+    });
+  });
 
   // DELETE FROM SHOPPING LIST
   app.delete("/api/profiles/:id", function (req, res) {
@@ -81,29 +79,28 @@ module.exports = function (app) {
     // }
   });
 
-  
-
-
-
-  app.put('/api/profiles/:id', function (req, res) {
+  app.put("/api/profiles/:id", function (req, res) {
     //   var condition = "id = " + req.params.id;
     //   console.log("condition", condition);
     console.log("three");
-    db.Profile.update({protected: 1, 
-      // vaxdate: date
-    }, {
-      where: {
-        id: req.params.id,
+    db.Profile.update(
+      {
+        protected: 1,
+        // vaxdate: date
       },
-    // }).update({vaxdate: Sequelize.literal('CURRENT_TIMESTAMP')}, {
-    //   where: {
-    //     id: req.params.id,
-    //   },
-    }).then(function (dbProfile) {
+      {
+        where: {
+          id: req.params.id,
+        },
+        // }).update({vaxdate: Sequelize.literal('CURRENT_TIMESTAMP')}, {
+        //   where: {
+        //     id: req.params.id,
+        //   },
+      }
+    ).then(function (dbProfile) {
       res.json(dbProfile);
     });
   });
 
   // Sequelize.literal('CURRENT_TIMESTAMP'),
-
 };

@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var $protectionContainer = $(".protection-container");
   var $shoppingContainer = $(".shopping-container");
-  var postCategorySelect = $("#category");
+  // var postCategorySelect = $("#category");
 
   $(document).on("click", ".delete-profile", deleteShoppingItem);
   $(document).on("click", ".vax-profile", vaxShoppingItem);
@@ -79,8 +79,12 @@ $(document).ready(function () {
       [
         "<li class='list-group-item shoppping-item'>",
         // "<button class='vaccinate-profile btn btn-primary id='" + parseInt(shopping.id) + "'> vaccinate </button>",
-        "<button class='delete-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> Delete </button>",
-        "<button class='vax-profile btn btn-danger' id='"    + parseInt(shopping.id) + "'> Vaccinate </button>",
+        "<button class='delete-profile btn btn-danger' id='" +
+          parseInt(shopping.id) +
+          "'> Delete </button>",
+        "<button class='vax-profile btn btn-danger' id='" +
+          parseInt(shopping.id) +
+          "'> Vaccinate </button>",
         " ",
         "<span>",
         shopping.Disease.disease,
@@ -98,7 +102,6 @@ $(document).ready(function () {
     }
     return $newInputCart;
   }
-
 
   // VACCINATE - UPDATE
   // This function figures out which disease we want to vaccinate and then calls vaxItem
@@ -122,8 +125,6 @@ $(document).ready(function () {
     });
   }
 
-
-
   // DELETE
   // This function figures out which post we want to delete and then calls deleteItem
   function deleteShoppingItem(event) {
@@ -131,7 +132,6 @@ $(document).ready(function () {
     console.log(currentItem);
     deleteItem(currentItem);
   }
-
 
   function deleteItem(currentItem) {
     $.ajax({
@@ -145,13 +145,8 @@ $(document).ready(function () {
 
   // // UPDATE  - DRAFT CODE - NOT YET READY
 
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
-
-
-
-
-
+  // If we're updating a post run updatePost to update a post
+  // Otherwise run submitPost to create a whole new post
 
   // // This function figures out which post we want to Update and then calls updateItem
   // function updateShoppingItem(event) {
