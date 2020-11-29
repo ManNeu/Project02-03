@@ -32,8 +32,12 @@ $(document).ready(function () {
     for (var i = 0; i < protectionsRows.length; i++) {
       rowsToAdd.push(createNewRow(protectionsRows[i]));
     }
+    if (rowsToAdd.length === 0){
+      $protectionContainer.append("<p class='whenNoVax'>You vaccination history is empty</p>")
+    } else {
     $protectionContainer.prepend(rowsToAdd);
   }
+}
 
   //   // This function constructs a protection-item row
   function createNewRow(protection) {
@@ -67,8 +71,12 @@ $(document).ready(function () {
     for (var i = 0; i < shoppingRows.length; i++) {
       cartsToAdd.push(createNewCart(shoppingRows[i]));
     }
+    if (cartsToAdd.length === 0){
+      $shoppingContainer.append("<p class='whenNoVax'>Your shopping cart is empty</p>")
+    } else {
     $shoppingContainer.prepend(cartsToAdd);
   }
+}
 
   //   // This function constructs a shoppping-item row
   function createNewCart(shopping) {
