@@ -14,10 +14,11 @@ To use this application, git clone this repository. Once you have git cloned, ru
 - Passport
 - Bcrypt
 - Express sessions
-- Mailgun
 - Mysql2
 - Nodemon
 - Sequelize
+- Moment
+
 
 The application can be invoked with npm start.
 
@@ -33,7 +34,11 @@ SO THAT I am able to travel safely
 
 ## Link to the application
 
+https://project02-003.herokuapp.com/
+
 ## Screenshots
+
+
 
 ## Built With
 
