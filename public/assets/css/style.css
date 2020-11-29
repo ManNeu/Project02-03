@@ -43,9 +43,9 @@ p {
 .added {
   border: 2px skyblue;
   background-color: skyblue;
-  color:white;
+  color: white;
   padding: 5px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 .completeMessage {
@@ -76,18 +76,19 @@ p {
   font-size: large;
 }
 
-.whenNoVax{
-  font-style:italic;
+.whenNoVax {
+  font-style: italic;
+}
+
+.security-screen {
+  margin-top: 40px;
 }
 
 /* BUTTONS */
 .delete-profile,
 .vax-profile {
-  /* height: 20px; */
   text-align: center;
-  /* line-height:8px; */
   margin-right: 10px;
-  /* width: 80px */
 }
 
 .delete-profile {
@@ -103,26 +104,18 @@ p {
 }
 
 .vaxlist {
-  /* position: absolute; */
   width: 500px;
   max-width: 500px;
   min-width: 200px;
 }
 
-
-  .btnplacement {
-    
-  }
-
-
-  .recolist, .vaxlist {
-    /* position: absolute; */
-    width: 400px;
-    max-width: 500px;
-    min-width: 300px;
-    margin-bottom: 50px;
-    }
-
+.recolist,
+.vaxlist {
+  width: 400px;
+  max-width: 500px;
+  min-width: 300px;
+  margin-bottom: 50px;
+}
 
 body {
   background-image: url("./../img/earth.png");
@@ -130,16 +123,6 @@ body {
   background-size: 50%;
   background-position: 85% 0%;
 }
-
-/* Media Querries for responsiveness */
-/* @media screen and (max-width: 577px) {
-  .my-container {    
-  max-width: 500px;
-  margin: 0px;
-  margin-bottom: 130px;
-  padding-left: 20px;
-  }
- } */
 
 .result:hover,
 .userInput:hover {
