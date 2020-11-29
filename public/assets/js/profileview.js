@@ -45,7 +45,7 @@ $(document).ready(function () {
         // protection.disease_id,
         protection.Disease.disease,
         "</br>",
-        "vaccinated on " + protection.vaxdate,
+        "vaccinated on " + moment(protection.vaxdate).format('MMMM YYYY'),
         "</span>",
         "</li>",
       ].join("")

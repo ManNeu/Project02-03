@@ -8,9 +8,9 @@
 // Requiring our Protection model
 var db = require("../models");
 const passport = require("../config/passport");
+const moment = require("moment");
 
-// const now = moment();
-// const date = now.format("DD MMMM YYYY");
+
 
 // Routes
 // =============================================================
@@ -85,10 +85,12 @@ module.exports = function (app) {
   });
 
   app.put("/api/profiles/:id", function (req, res) {
+    const now = moment();
+    const date = now.format("YYYY-MM-DD");
     db.Profile.update(
       {
         protected: 1,
-        // vaxdate: date
+        vaxdate: date
       },
       {
         where: {
