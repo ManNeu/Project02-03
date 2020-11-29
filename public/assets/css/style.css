@@ -31,9 +31,13 @@ p {
   display: none;
 }
 
+.diseaseDescription{
+  color:#5a5a5a;
+}
+
 .diseaseDescription a {
   pointer-events: none;
-  color: black;
+  color:#5a5a5a;
 }
 
 .disappear {
