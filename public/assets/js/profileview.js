@@ -44,7 +44,8 @@ $(document).ready(function () {
         "<span>",
         // protection.disease_id,
         protection.Disease.disease,
-        ", vaccinated on " + protection.vaxdate,
+        "</br>",
+        "vaccinated on " + protection.vaxdate,
         "</span>",
         "</li>",
       ].join("")
@@ -82,16 +83,12 @@ $(document).ready(function () {
         shopping.Disease.disease,
         "</span>",
         "</br>",
-        "<span class=btnplacement>",
         "<button class='delete-profile btn btn-danger' id='" +
           parseInt(shopping.id) +
           "'> Delete </button>",
         "<button class='vax-profile btn btn-danger' id='" +
           parseInt(shopping.id) +
           "'> Vaccinate </button>",
-          "</span>",
-        " ",
-
         "</li>",
       ].join("")
     );
@@ -110,20 +107,17 @@ $(document).ready(function () {
   function vaxShoppingItem(event) {
     var currentItem = $(event.currentTarget).prop("id");
     console.log(currentItem);
-    console.log("one");
     vaxItem(currentItem);
   }
 
   function vaxItem(currentItem) {
     console.log(currentItem);
-    console.log("two");
     $.ajax({
       method: "PUT",
       url: "/api/profiles/" + currentItem,
     }).then(function () {
-      location.reload();
-      console.log("four");
-      // initializeCart(postCategorySelect.val());
+      getShoppingCart();
+      getProtections();
     });
   }
 
@@ -140,46 +134,9 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/profiles/" + currentItem,
     }).then(function () {
-      location.reload();
-      // initializeCart(postCategorySelect.val());
+      getShoppingCart();
     });
   }
 
-  // // UPDATE  - DRAFT CODE - NOT YET READY
-
-  // If we're updating a post run updatePost to update a post
-  // Otherwise run submitPost to create a whole new post
-
-  // // This function figures out which post we want to Update and then calls updateItem
-  // function updateShoppingItem(event) {
-  //   var currentItem = $(event.currentTarget)
-  //     .prop("id");
-  //     console.log(currentItem);
-  //     updateItem(currentItem);
-  // }
-
-  // function updateItem(currentItem) {
-  //   $.ajax({
-  //     method: "UPDATE",
-  //     data: newSleepState
-  //     url: "/api/profiles/" + currentItem
-  //   })
-  //     .then(function() {
-  //       location.reload();
-  //       // initializeCart(postCategorySelect.val());
-  //     });
-  // }
-  //
-  //
-  // // Send the PUT request.
-  // $.ajax("/api/cats/" + id, {
-  //   type: "PUT",
-  //   data: newSleepState
-  // }).then(
-  //   function() {
-  //     console.log("changed sleep to", newSleep);
-  //     // Reload the page to get the updated list
-  //     location.reload();
-  //   }
-  // );
+  
 });
