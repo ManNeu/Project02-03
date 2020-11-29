@@ -14,7 +14,7 @@ function getRecomendationsAll() {
   $.get(`/api/recomendationAll/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsAll(data);
-    addToCart()
+    
   });
 }
 function initializeRowsAll(recomendationsAllRows) {
@@ -57,7 +57,7 @@ function getRecomendationsMost() {
   $.get(`/api/recomendationMost/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsMost(data);
-    addToCart();  
+    
   });
 }
 
@@ -102,7 +102,7 @@ function getRecomendationsSome() {
   $.get(`/api/recomendationSome/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsSome(data);
-    addToCart();
+    
   });
 }
 function initializeRowsSome(recomendationsSomeRows) {
@@ -139,29 +139,28 @@ function createSomeRow(recomendationSome) {
   return $newInputRow;
 }
 
-// ADD TO CART
-function addToCart(){
- $(".addToCart").on("click", function (){
- var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
-  var disease_id = $(this).attr("id");
 
-  console.log(person_id, disease_id)
-
-  var newDisease = {
-    person_id: person_id,
-    disease_id:disease_id,
-    protected: 0,
-  };
-
-  console.log(newDisease);
-
-  $.post("/api/profile", newDisease);
-
-  $(this).replaceWith('<span class="added">Successfully Added!</span>')
-  
-})
-}
 
 getRecomendationsAll();
 getRecomendationsMost();
 getRecomendationsSome();
+
+$(document).on("click", ".addToCart", function (event){
+  var person_id = parseInt(JSON.parse(localStorage.getItem("user")).id);
+   var disease_id = $(event.target).attr("id");
+ 
+   console.log(person_id, disease_id)
+ 
+   var newDisease = {
+     person_id: person_id,
+     disease_id:disease_id,
+     protected: 0,
+   };
+ 
+   console.log(newDisease);
+ 
+   $.post("/api/profile", newDisease);
+ 
+   $(this).replaceWith('<span class="added">Successfully Added!</span>')
+  //  event.target.innerHTML = '<span class="added">Successfully Added!</span>';
+ })
