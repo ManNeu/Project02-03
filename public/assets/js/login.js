@@ -30,7 +30,9 @@ $(document).ready(() => {
     })
       .then((data) => {
         console.log("console logging data:" + data);
+        // Replaces screen to index page
         window.location.replace("/index");
+        // Setting user details in local storage 
         localStorage.setItem("user", JSON.stringify(data));
       })
       .catch((err) => {
