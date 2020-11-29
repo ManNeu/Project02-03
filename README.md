@@ -44,6 +44,7 @@ SO THAT I am able to travel safely
 - Express
 - Node
 - Sequelize 
+- GIMP 2.10 
 
 ## License 
 
@@ -77,7 +78,10 @@ Noriyuki Ishii <br>
 Email: nishii.dev.syd@gmail.com<br>
 GitHub: https://github.com/noriyuki-ishii-820
 
+Manish Neupane <br>
+Email: mrnish.are@gmail.com <br>
+Github: https://github.com/ManNeu
+
 Luke Wilkinson <br>
 Email: luke.wilkinson.nz@gmail.com<br>
 GitHub: https://github.com/DukeWilki
-

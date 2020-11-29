@@ -22,13 +22,14 @@ module.exports = function (app) {
       attributes: ["id", "disease_id", "vaxdate", "protected"],
       where: {
         protected: 1,
-        // person_id: "2"
+        // person_id: "10"
       },
       order: [
         ['vaxdate', 'DESC'],
         ['id', 'DESC'],
     ],
       include: [db.Disease],
+      // include: [db.Person],
     }).then(function (dbProfile) {
       // db.Profile.findAll({}) use SQL fiormula here to filter out data true/false
       // We have access to the Profiles as an argument inside of the callback function
@@ -44,7 +45,7 @@ module.exports = function (app) {
       attributes: ["id", "disease_id", "person_id", "vaxdate", "protected"],
       where: {
         protected: 0,
-        // person_id: "2"
+        // person_id: "10"
         // person_id: req.params.id
       },
       include: [db.Disease],
@@ -84,9 +85,6 @@ module.exports = function (app) {
   });
 
   app.put("/api/profiles/:id", function (req, res) {
-    //   var condition = "id = " + req.params.id;
-    //   console.log("condition", condition);
-    console.log("three");
     db.Profile.update(
       {
         protected: 1,
@@ -96,6 +94,7 @@ module.exports = function (app) {
         where: {
           id: req.params.id,
         },
+        // }).update({vaxdate: Sequelize.literal('CURRENT_TIMESTAMP')}, {
         // }).update({vaxdate: Sequelize.literal('CURRENT_TIMESTAMP')}, {
         //   where: {
         //     id: req.params.id,
