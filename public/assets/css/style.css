@@ -98,7 +98,9 @@ p {
   background-color: rgb(108, 133, 214);
 }
 
-
+.info-select {
+  margin-bottom: 30px;
+}
 
 .vaxlist {
   /* position: absolute; */
