@@ -76,6 +76,10 @@ p {
   font-size: large;
 }
 
+.whenNoVax{
+  font-style:italic;
+}
+
 /* BUTTONS */
 .delete-profile,
 .vax-profile {
