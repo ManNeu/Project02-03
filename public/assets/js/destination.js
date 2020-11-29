@@ -23,7 +23,12 @@ function initializeRowsAll(recomendationsAllRows) {
   for (var i = 0; i < recomendationsAllRows.length; i++) {
     rowsAllToAdd.push(createAllRow(recomendationsAllRows[i]));
   }
-  $recomendationAllContainer.prepend(rowsAllToAdd);
+
+ if (rowsAllToAdd.length === 0){
+  $recomendationAllContainer.append("<p class='whenNoVax'>No recommendations, but make sure your routine vaccinations are up to date</p>")
+  } else {
+    $recomendationAllContainer.prepend(rowsAllToAdd)
+  }
 }
 //   // This function constructs a protection-item row
 function createAllRow(recomendationAll) {
@@ -57,7 +62,6 @@ function getRecomendationsMost() {
   $.get(`/api/recomendationMost/${userChoiceCountry}`, function (data) {
     console.log(data);
     initializeRowsMost(data);
-    
   });
 }
 
@@ -67,7 +71,11 @@ function initializeRowsMost(recomendationsMostRows) {
   for (var i = 0; i < recomendationsMostRows.length; i++) {
     rowsMostToAdd.push(createMostRow(recomendationsMostRows[i]));
   }
+  if (rowsMostToAdd.length === 0){
+    $recomendationMostContainer.append("<p class='whenNoVax'>No recommendations, but make sure your routine vaccinations are up to date</p>")
+  } else {
   $recomendationMostContainer.prepend(rowsMostToAdd);
+  }
 }
 
 //   // This function constructs a protection-item row
@@ -111,7 +119,11 @@ function initializeRowsSome(recomendationsSomeRows) {
   for (var i = 0; i < recomendationsSomeRows.length; i++) {
     rowsSomeToAdd.push(createSomeRow(recomendationsSomeRows[i]));
   }
+  if (rowsSomeToAdd.length === 0 ){
+    $recomendationSomeContainer.append("<p class='whenNoVax'>No recommendations, but consult your doctor if you have any concerns</p>")
+  } else {
   $recomendationSomeContainer.prepend(rowsSomeToAdd);
+  }
 }
 //   // This function constructs a protection-item row
 function createSomeRow(recomendationSome) {
