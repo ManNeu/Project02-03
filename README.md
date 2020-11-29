@@ -17,7 +17,8 @@ To use this application, git clone this repository. Once you have git cloned, ru
 - Mailgun 
 - Mysql2
 - Nodemon
-- Sequelize 
+- Sequelize
+- Moment
 
 The application can be invoked with npm start.
 
@@ -27,11 +28,9 @@ AS A health conscious person
 I WANT something that can remember the vaccination dates 
 SO THAT I don’t get sick 
 
-
 AS A traveller 
 I WANT something that tells me what vaccinations are needed for specific countries
 SO THAT I am able to travel safely 
-
 
 ## Link to the application 
 
