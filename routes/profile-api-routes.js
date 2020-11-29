@@ -17,12 +17,13 @@ const moment = require("moment");
 module.exports = function (app) {
   // GET route for getting all of the protections
   app.get("/api/protection", function (req, res) {
+    const currentUser = req.user;
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
       attributes: ["id", "disease_id", "vaxdate", "protected"],
       where: {
         protected: 1,
-        // person_id: "10"
+        person_id: currentUser.id
       },
       order: [
         ['vaxdate', 'DESC'],
@@ -40,11 +41,13 @@ module.exports = function (app) {
 
   // GET route for getting all of the shopping list items
   app.get("/api/profile", function (req, res) {
+    const currentUser = req.user;
     // findAll returns all entries for a table when used with no options
     db.Profile.findAll({
       attributes: ["id", "disease_id", "person_id", "vaxdate", "protected"],
       where: {
         protected: 0,
+        person_id: currentUser.id
         // person_id: "10"
         // person_id: req.params.id
       },
@@ -57,6 +60,7 @@ module.exports = function (app) {
     });
   });
 
+  // ADD TO CART
   app.post("/api/profile", function (req, res) {
     console.log(req.body);
     db.Profile.create({
