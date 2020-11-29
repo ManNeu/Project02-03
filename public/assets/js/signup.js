@@ -30,8 +30,10 @@ $(document).ready(() => {
     })
       .then((data) => {
         console.log(data);
+        // Replaces screen with index page 
         window.location.replace("/index");
       })
+      // If there is an error, the error message will display 
       .catch(loginErr);
   }
 
