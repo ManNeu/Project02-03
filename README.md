@@ -38,7 +38,64 @@ https://project02-003.herokuapp.com/
 
 ## Screenshots
 
+Screenshot1: This app firstly provides the log-in/sign-up landing page.
 
+![](./screenshots/v1.png)
+
+--------------
+
+Screenshot2: Once logged in, the user can look for the vaccinations by either the name of the disease OR the destination he/she is looking to go.
+
+![](./screenshots/v2.png)
+
+--------------
+
+Screenshot3: "Select Disease" option offers the list of major diseases that requires vaccination.
+
+![](./screenshots/v3.png)
+
+--------------
+
+Screenshot4: each page offers the description of the disease. The user can click the Add-To-Cart button if he/she wishes to add to the shopping list. 
+
+![](./screenshots/v4.png)
+
+--------------
+
+Screenshot5: Once clicked, the UI offers the user the confirmation. 
+
+![](./screenshots/v5.png)
+
+--------------
+
+Screenshot6 and 7: The country button offers the region first, then the list of countries.  
+
+![](./screenshots/v6.png)
+![](./screenshots/v7.png)
+
+--------------
+
+Screenshot 8: Each country page offers the user the list of vaccinations recommended for all, most and some travellers with the add-to-cart button for each disease. 
+
+![](./screenshots/v8.png)
+
+--------------
+
+Screenshot 9: Similar to the disease page, the user can add the vaccination from this page as well. 
+
+![](./screenshots/v9.png)
+
+--------------
+
+Screenshot 10: In the My Profile page, the user can see the shopping list with the Delete and Vaccinate buttons. 
+
+![](./screenshots/v10.png)
+
+--------------
+
+Screenshot 11: Once the vaccination button is clicked, the protection history updates itself with the month and year of the vaccination.
+
+![](./screenshots/v11.png)
 
 ## Built With
 
