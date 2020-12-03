@@ -1,10 +1,12 @@
-# Project02-03
+# Vaccination Tracker
+
+<img src="https://img.shields.io/badge/Licence-MIT%20License-green">
 
 This application stores the vaccination history of the user and displays what vaccinations are recommended for when a person travels to a particular country. Once the user has selected the country they wish to travel, a list shows of the vaccinations recommended and the user is able to select add to cart and it adds the vaccination to their profile page in a shopping list. Once the user has been vaccinated, the vaccination moves to the protected list and shows the user when they are due for a booster.
 
 ## Contents
 
-the application consists of 1 main file, server.js. The config folder contains the middleware file and the passport.js file. The db folder contains all the seed files for the tables. The models folder contains all the models needed for sequelize. The public folder contains all the Javascript files, html files and the css file.
+The application consists of 1 main file, server.js. The config folder contains the middleware file and the passport.js file. The db folder contains all the seed files for the tables. The models folder contains all the models needed for sequelize. The public folder contains all the Javascript files, html files and the css file.
 
 ## Usage
 
